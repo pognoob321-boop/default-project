@@ -8,6 +8,6 @@
 #
 # pandas 3.0.5 / numpy 2.4.4 are verified working on Python 3.12.
 pandas>=2.2
-numpy>=1.26
+numpy>=2.5.4
 requests>=2.31
 matplotlib>=3.8
