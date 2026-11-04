@@ -1,0 +1,500 @@
+{
+  "version": 1,
+  "historyId": "4118fa94-427f-493f-83a9-aec404204c11",
+  "currentRevision": "5ec5bf30-46c5-4af2-9270-fa6aca348211",
+  "pendingChanges": false,
+  "files": {
+    "assets/bgm/track.wav": {
+      "hash": "1eb76fa21e9618241cde7a03ab10be66ef79b8277b6a4cf90a0c113e123fa35b",
+      "content": "C:\\Users\\ZBook\\.cache\\hyperframes\\history\\4118fa94-427f-493f-83a9-aec404204c11\\blobs\\1e\\1eb76fa21e9618241cde7a03ab10be66ef79b8277b6a4cf90a0c113e123fa35b"
+    },
+    "hyperframes.json": {
+      "hash": "53dbce1e19aa713cbb12ee0bc4d206143b45ab15e6ffbfcaa8f69572d4d24d50",
+      "content": "C:\\Users\\ZBook\\.cache\\hyperframes\\history\\4118fa94-427f-493f-83a9-aec404204c11\\blobs\\53\\53dbce1e19aa713cbb12ee0bc4d206143b45ab15e6ffbfcaa8f69572d4d24d50"
+    },
+    "index.html": {
+      "hash": "059fc9b31e0cf2e2e6906170f5dc212f482f033d4864a5cbcfe945e0493c6093",
+      "content": "C:\\Users\\ZBook\\.cache\\hyperframes\\history\\4118fa94-427f-493f-83a9-aec404204c11\\blobs\\05\\059fc9b31e0cf2e2e6906170f5dc212f482f033d4864a5cbcfe945e0493c6093"
+    },
+    "meta.json": {
+      "hash": "148241969066d2cccee545142f8b374b38bc672caf563be96235401442f35fa1",
+      "content": "C:\\Users\\ZBook\\.cache\\hyperframes\\history\\4118fa94-427f-493f-83a9-aec404204c11\\blobs\\14\\148241969066d2cccee545142f8b374b38bc672caf563be96235401442f35fa1"
+    },
+    "package.json": {
+      "hash": "b3fd7e4a0e7aa1a8817e5f88d4e8cbcf3577be1afe1bc9237d15781044a0381a",
+      "content": "C:\\Users\\ZBook\\.cache\\hyperframes\\history\\4118fa94-427f-493f-83a9-aec404204c11\\blobs\\b3\\b3fd7e4a0e7aa1a8817e5f88d4e8cbcf3577be1afe1bc9237d15781044a0381a"
+    },
+    "check.json": {
+      "hash": "eaf882e706922ba4bbd4bb12b0ddaa67ee811d1b93963c433722d8ea7e2e7040",
+      "content": "C:\\Users\\ZBook\\.cache\\hyperframes\\history\\4118fa94-427f-493f-83a9-aec404204c11\\blobs\\ea\\eaf882e706922ba4bbd4bb12b0ddaa67ee811d1b93963c433722d8ea7e2e7040"
+    },
+    "parse.ps1": {
+      "hash": "7054092dc373101e28970225307673874bbfafd7cd891d754f61014efb996c35",
+      "content": "C:\\Users\\ZBook\\.cache\\hyperframes\\history\\4118fa94-427f-493f-83a9-aec404204c11\\blobs\\70\\7054092dc373101e28970225307673874bbfafd7cd891d754f61014efb996c35"
+    }
+  },
+  "revisions": {
+    "bd304247-9a40-42c1-a987-60058fadb3c0": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1793112194695,
+      "endedAt": 1793112194698,
+      "files": {
+        "check.json": {
+          "before": null,
+          "after": "C:\\Users\\ZBook\\.cache\\hyperframes\\history\\4118fa94-427f-493f-83a9-aec404204c11\\blobs\\94\\94d7bf44a5cfb46a2152754c016a7f07324811e835ae3527f66fe2cda0ed40d6"
+        }
+      }
+    },
+    "21cc3f54-b344-4a02-af39-74cf40aea5b6": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1793112558435,
+      "endedAt": 1793112558449,
+      "files": {
+        "check.json": {
+          "before": "C:\\Users\\ZBook\\.cache\\hyperframes\\history\\4118fa94-427f-493f-83a9-aec404204c11\\blobs\\94\\94d7bf44a5cfb46a2152754c016a7f07324811e835ae3527f66fe2cda0ed40d6",
+          "after": "C:\\Users\\ZBook\\.cache\\hyperframes\\history\\4118fa94-427f-493f-83a9-aec404204c11\\blobs\\e3\\e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "index.html": {
+          "before": "C:\\Users\\ZBook\\.cache\\hyperframes\\history\\4118fa94-427f-493f-83a9-aec404204c11\\blobs\\f9\\f9e7ac5a73098c4bdfe07b3190b3b27541081a1fe2f81ef2ff879948364c49a6",
+          "after": "C:\\Users\\ZBook\\.cache\\hyperframes\\history\\4118fa94-427f-493f-83a9-aec404204c11\\blobs\\df\\df6744db6ec7d715e7e81620d6b61a51fbaee156756c9dccb1259d59b97d439e"
+        },
+        "parse.ps1": {
+          "before": null,
+          "after": "C:\\Users\\ZBook\\.cache\\hyperframes\\history\\4118fa94-427f-493f-83a9-aec404204c11\\blobs\\70\\7054092dc373101e28970225307673874bbfafd7cd891d754f61014efb996c35"
+        }
+      }
+    },
+    "e1d1f34a-48b7-4167-ae35-b4a27dd988b5": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1793112593275,
+      "endedAt": 1793112593278,
+      "files": {
+        "check.json": {
+          "before": "C:\\Users\\ZBook\\.cache\\hyperframes\\history\\4118fa94-427f-493f-83a9-aec404204c11\\blobs\\e3\\e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "after": "C:\\Users\\ZBook\\.cache\\hyperframes\\history\\4118fa94-427f-493f-83a9-aec404204c11\\blobs\\6e\\6ec0f603a0d9c9bfc4a45a0ad1f9b78e95aa57fbb81d26ad6b646f2df52f37ee"
+        }
+      }
+    },
+    "c4364bad-a7b2-411f-a468-163b6fc77403": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1793113112660,
+      "endedAt": 1793113112667,
+      "files": {
+        "check.json": {
+          "before": "C:\\Users\\ZBook\\.cache\\hyperframes\\history\\4118fa94-427f-493f-83a9-aec404204c11\\blobs\\6e\\6ec0f603a0d9c9bfc4a45a0ad1f9b78e95aa57fbb81d26ad6b646f2df52f37ee",
+          "after": "C:\\Users\\ZBook\\.cache\\hyperframes\\history\\4118fa94-427f-493f-83a9-aec404204c11\\blobs\\e3\\e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "index.html": {
+          "before": "C:\\Users\\ZBook\\.cache\\hyperframes\\history\\4118fa94-427f-493f-83a9-aec404204c11\\blobs\\df\\df6744db6ec7d715e7e81620d6b61a51fbaee156756c9dccb1259d59b97d439e",
+          "after": "C:\\Users\\ZBook\\.cache\\hyperframes\\history\\4118fa94-427f-493f-83a9-aec404204c11\\blobs\\05\\059fc9b31e0cf2e2e6906170f5dc212f482f033d4864a5cbcfe945e0493c6093"
+        }
+      }
+    },
+    "5ec5bf30-46c5-4af2-9270-fa6aca348211": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1793113142473,
+      "endedAt": 1793113142476,
+      "files": {
+        "check.json": {
+          "before": "C:\\Users\\ZBook\\.cache\\hyperframes\\history\\4118fa94-427f-493f-83a9-aec404204c11\\blobs\\e3\\e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "after": "C:\\Users\\ZBook\\.cache\\hyperframes\\history\\4118fa94-427f-493f-83a9-aec404204c11\\blobs\\ea\\eaf882e706922ba4bbd4bb12b0ddaa67ee811d1b93963c433722d8ea7e2e7040"
+        }
+      }
+    }
+  },
+  "checks": {
+    "latest": {
+      "revision": null,
+      "id": "5bb964a6-dd63-477a-8117-46102c10bdf2"
+    },
+    "revisions": {
+      "bd304247-9a40-42c1-a987-60058fadb3c0": [
+        {
+          "id": "efc10766-c073-45b4-a033-87796ab93f3e",
+          "scope": "project",
+          "metadata": {
+            "ok": false,
+            "browserSkipped": true,
+            "options": {
+              "samples": 9,
+              "atTransitions": false,
+              "maxIssues": 80,
+              "collapseStatic": true,
+              "tolerance": 2,
+              "timeout": 3000,
+              "contrast": true,
+              "strict": false,
+              "snapshots": false,
+              "browserGpuMode": "auto"
+            }
+          },
+          "createdAt": 1793112194780,
+          "contentHash": "0dd06435065a550df3afa0c0a30f4750929f1c9eb9dc0cb3051477949d560ac0",
+          "revision": "bd304247-9a40-42c1-a987-60058fadb3c0",
+          "inputFingerprint": "f4695cb714e1a9e5741608cb095ec345250fabed4d0a3d3a1580187c13b93972",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "7f6c652c-7113-4eea-a5c2-ddf721a73594"
+        }
+      ]
+    },
+    "unversioned": [
+      {
+        "id": "034ddb56-9bac-474d-ad24-010df25db585",
+        "scope": "project",
+        "report": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\.hyperframes\\artifacts\\checks\\034ddb56-9bac-474d-ad24-010df25db585.json",
+        "metadata": {
+          "ok": false,
+          "browserSkipped": true,
+          "options": {
+            "samples": 9,
+            "atTransitions": false,
+            "maxIssues": 80,
+            "collapseStatic": true,
+            "tolerance": 2,
+            "timeout": 3000,
+            "contrast": true,
+            "strict": false,
+            "snapshots": false,
+            "browserGpuMode": "auto"
+          }
+        },
+        "createdAt": 1793112163001,
+        "contentHash": "0dd06435065a550df3afa0c0a30f4750929f1c9eb9dc0cb3051477949d560ac0",
+        "revision": null,
+        "inputFingerprint": "5fb5290916f2d0b43489a6b242c3a638433b48955596c82f41ea59efcca19d06",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      },
+      {
+        "id": "1a86c813-10a6-42de-95fa-e3d20c166f7c",
+        "scope": "project",
+        "report": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\.hyperframes\\artifacts\\checks\\1a86c813-10a6-42de-95fa-e3d20c166f7c.json",
+        "metadata": {
+          "ok": false,
+          "browserSkipped": true,
+          "options": {
+            "samples": 9,
+            "atTransitions": false,
+            "maxIssues": 80,
+            "collapseStatic": true,
+            "tolerance": 2,
+            "timeout": 3000,
+            "contrast": true,
+            "strict": false,
+            "snapshots": false,
+            "browserGpuMode": "auto"
+          }
+        },
+        "createdAt": 1793112179148,
+        "contentHash": "0dd06435065a550df3afa0c0a30f4750929f1c9eb9dc0cb3051477949d560ac0",
+        "revision": null,
+        "inputFingerprint": "5fb5290916f2d0b43489a6b242c3a638433b48955596c82f41ea59efcca19d06",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      },
+      {
+        "id": "e4bd9cbe-f68a-46c0-9f5c-7834791dc48b",
+        "scope": "project",
+        "report": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\.hyperframes\\artifacts\\checks\\e4bd9cbe-f68a-46c0-9f5c-7834791dc48b.json",
+        "metadata": {
+          "ok": true,
+          "browserSkipped": false,
+          "options": {
+            "samples": 9,
+            "atTransitions": false,
+            "maxIssues": 80,
+            "collapseStatic": true,
+            "tolerance": 2,
+            "timeout": 3000,
+            "contrast": true,
+            "strict": false,
+            "snapshots": false,
+            "browserGpuMode": "auto"
+          }
+        },
+        "createdAt": 1793112569914,
+        "contentHash": "7fe48f3d3a497c27f052c17a09c411b2992b1310ea5afa5ffb76be2d4cfcb3da",
+        "revision": null,
+        "inputFingerprint": "189cbb084257405e274ba655ef3cee2ebb26683a6cf2b9fb1b6d653f684efbe6",
+        "inputScope": "local-project-files",
+        "attribution": "inputs-changed"
+      },
+      {
+        "id": "5bb964a6-dd63-477a-8117-46102c10bdf2",
+        "scope": "project",
+        "report": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\.hyperframes\\artifacts\\checks\\5bb964a6-dd63-477a-8117-46102c10bdf2.json",
+        "metadata": {
+          "ok": true,
+          "browserSkipped": false,
+          "options": {
+            "samples": 9,
+            "atTransitions": false,
+            "maxIssues": 80,
+            "collapseStatic": true,
+            "tolerance": 2,
+            "timeout": 3000,
+            "contrast": true,
+            "strict": false,
+            "snapshots": false,
+            "browserGpuMode": "auto"
+          }
+        },
+        "createdAt": 1793113124402,
+        "contentHash": "7fe48f3d3a497c27f052c17a09c411b2992b1310ea5afa5ffb76be2d4cfcb3da",
+        "revision": null,
+        "inputFingerprint": "f04515e063663305a2c7bdc404a5a90d2a569ee880755c1976fee57550fb27b2",
+        "inputScope": "local-project-files",
+        "attribution": "inputs-changed"
+      }
+    ]
+  },
+  "snapshots": {
+    "latest": {
+      "revision": "5ec5bf30-46c5-4af2-9270-fa6aca348211",
+      "id": "a3e40d1f-8f86-4660-b86e-384e78f19021-4"
+    },
+    "revisions": {
+      "e1d1f34a-48b7-4167-ae35-b4a27dd988b5": [
+        {
+          "scope": "full",
+          "id": "165d9474-78d1-4bf6-8a65-2c85c1450004-0",
+          "image": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\.hyperframes\\artifacts\\snapshots\\41a75193-f65c-4a65-9b4f-e54feefd0529\\frame-00-at-0s.png",
+          "time": 0,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1793112675006,
+          "contentHash": "b46ee9dadfc9b868c75c748e3abc5303588f881eed2168a04007ff038aca1b15",
+          "revision": "e1d1f34a-48b7-4167-ae35-b4a27dd988b5",
+          "inputFingerprint": "b35eb3e3584ce9c9736951f27424b318d4a7c951f80ef80b659a1099b6653700",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "165d9474-78d1-4bf6-8a65-2c85c1450004-1",
+          "image": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\.hyperframes\\artifacts\\snapshots\\41a75193-f65c-4a65-9b4f-e54feefd0529\\frame-01-at-15s.png",
+          "time": 15,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1793112675006,
+          "contentHash": "b46ee9dadfc9b868c75c748e3abc5303588f881eed2168a04007ff038aca1b15",
+          "revision": "e1d1f34a-48b7-4167-ae35-b4a27dd988b5",
+          "inputFingerprint": "b35eb3e3584ce9c9736951f27424b318d4a7c951f80ef80b659a1099b6653700",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "165d9474-78d1-4bf6-8a65-2c85c1450004-2",
+          "image": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\.hyperframes\\artifacts\\snapshots\\41a75193-f65c-4a65-9b4f-e54feefd0529\\frame-02-at-24s.png",
+          "time": 24,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1793112675006,
+          "contentHash": "b46ee9dadfc9b868c75c748e3abc5303588f881eed2168a04007ff038aca1b15",
+          "revision": "e1d1f34a-48b7-4167-ae35-b4a27dd988b5",
+          "inputFingerprint": "b35eb3e3584ce9c9736951f27424b318d4a7c951f80ef80b659a1099b6653700",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "165d9474-78d1-4bf6-8a65-2c85c1450004-3",
+          "image": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\.hyperframes\\artifacts\\snapshots\\41a75193-f65c-4a65-9b4f-e54feefd0529\\frame-03-at-29.5s.png",
+          "time": 29.5,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1793112675006,
+          "contentHash": "ea8d67afa3df7733f49614ca3b8227d8c40a81d08a3fa6d2822f74fff32ba2d2",
+          "revision": "e1d1f34a-48b7-4167-ae35-b4a27dd988b5",
+          "inputFingerprint": "b35eb3e3584ce9c9736951f27424b318d4a7c951f80ef80b659a1099b6653700",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "165d9474-78d1-4bf6-8a65-2c85c1450004-4",
+          "image": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\.hyperframes\\artifacts\\snapshots\\41a75193-f65c-4a65-9b4f-e54feefd0529\\frame-04-at-29.1s.png",
+          "time": 29.1,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1793112675006,
+          "contentHash": "ea8d67afa3df7733f49614ca3b8227d8c40a81d08a3fa6d2822f74fff32ba2d2",
+          "revision": "e1d1f34a-48b7-4167-ae35-b4a27dd988b5",
+          "inputFingerprint": "b35eb3e3584ce9c9736951f27424b318d4a7c951f80ef80b659a1099b6653700",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        }
+      ],
+      "5ec5bf30-46c5-4af2-9270-fa6aca348211": [
+        {
+          "scope": "full",
+          "id": "a3e40d1f-8f86-4660-b86e-384e78f19021-0",
+          "image": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\.hyperframes\\artifacts\\snapshots\\0b48661a-ce59-4a20-a4a1-880701c02e10\\frame-00-at-0s.png",
+          "time": 0,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1793113225956,
+          "contentHash": "b46ee9dadfc9b868c75c748e3abc5303588f881eed2168a04007ff038aca1b15",
+          "revision": "5ec5bf30-46c5-4af2-9270-fa6aca348211",
+          "inputFingerprint": "8f4c64fc14e80e98dbe7c663c24042555b17f980cf7a28ba8e0ca2f894322fda",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "a3e40d1f-8f86-4660-b86e-384e78f19021-1",
+          "image": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\.hyperframes\\artifacts\\snapshots\\0b48661a-ce59-4a20-a4a1-880701c02e10\\frame-01-at-2s.png",
+          "time": 2,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1793113225957,
+          "contentHash": "3b3811d35a11337fe9ebe5e6146501f2cb3a8e437ebf8b3c7cd33c1ce109be2a",
+          "revision": "5ec5bf30-46c5-4af2-9270-fa6aca348211",
+          "inputFingerprint": "8f4c64fc14e80e98dbe7c663c24042555b17f980cf7a28ba8e0ca2f894322fda",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "a3e40d1f-8f86-4660-b86e-384e78f19021-2",
+          "image": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\.hyperframes\\artifacts\\snapshots\\0b48661a-ce59-4a20-a4a1-880701c02e10\\frame-02-at-27s.png",
+          "time": 27,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1793113225957,
+          "contentHash": "ea8d67afa3df7733f49614ca3b8227d8c40a81d08a3fa6d2822f74fff32ba2d2",
+          "revision": "5ec5bf30-46c5-4af2-9270-fa6aca348211",
+          "inputFingerprint": "8f4c64fc14e80e98dbe7c663c24042555b17f980cf7a28ba8e0ca2f894322fda",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "a3e40d1f-8f86-4660-b86e-384e78f19021-3",
+          "image": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\.hyperframes\\artifacts\\snapshots\\0b48661a-ce59-4a20-a4a1-880701c02e10\\frame-03-at-29.9s.png",
+          "time": 29.9,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1793113225958,
+          "contentHash": "b46ee9dadfc9b868c75c748e3abc5303588f881eed2168a04007ff038aca1b15",
+          "revision": "5ec5bf30-46c5-4af2-9270-fa6aca348211",
+          "inputFingerprint": "8f4c64fc14e80e98dbe7c663c24042555b17f980cf7a28ba8e0ca2f894322fda",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "a3e40d1f-8f86-4660-b86e-384e78f19021-4",
+          "image": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\.hyperframes\\artifacts\\snapshots\\0b48661a-ce59-4a20-a4a1-880701c02e10\\frame-04-at-29.1s.png",
+          "time": 29.1,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1793113225958,
+          "contentHash": "ea8d67afa3df7733f49614ca3b8227d8c40a81d08a3fa6d2822f74fff32ba2d2",
+          "revision": "5ec5bf30-46c5-4af2-9270-fa6aca348211",
+          "inputFingerprint": "8f4c64fc14e80e98dbe7c663c24042555b17f980cf7a28ba8e0ca2f894322fda",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        }
+      ]
+    },
+    "unversioned": []
+  },
+  "renders": {
+    "latest": {
+      "id": "10ef6ab2-b63d-4143-8824-ebf15f05d353",
+      "completedAt": 1793113205845,
+      "output": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\renders\\video-tiktok_2026-10-27_21-59-00.mp4",
+      "status": "completed",
+      "revision": "5ec5bf30-46c5-4af2-9270-fa6aca348211"
+    },
+    "retainedRevisions": [
+      "5ec5bf30-46c5-4af2-9270-fa6aca348211",
+      "e1d1f34a-48b7-4167-ae35-b4a27dd988b5"
+    ]
+  },
+  "pendingArtifactCleanup": []
+}

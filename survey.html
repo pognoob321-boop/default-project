@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student's Message and Meet Up — Vitou Phea</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700;900&family=Karla:wght@400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700;900&family=Karla:wght@400;500;700&display=swap"></noscript>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<main class="sheet">
+
+  <!-- ===== TOP BAR ===== -->
+  <header class="topbar reveal">
+    <div class="brand">
+      <span class="brand-mark">V</span>
+      <span class="brand-name">Vitou Phea</span>
+    </div>
+    <nav class="topnav" aria-label="Sandbox pages">
+      <a href="index.html">Log Out</a>
+    </nav>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+
+    <div class="hero-copy">
+      <p class="kicker reveal">Session 001 &middot; Signed in</p>
+
+      <h1 class="display reveal">Student's Message and <em>Meet Up</em></h1>
+
+      <p class="lede reveal">
+        Fill this in and the meeting is sorted: your name, the time, the spot,
+        your favorite subject, and a message for me. The ticket updates as you type.
+      </p>
+    </div>
+
+  </section>
+
+  <!-- ===== FORM + TICKET GRID ===== -->
+  <section class="inside reveal" style="margin-top: 40px;">
+
+    <div class="grid" style="display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 26px; align-items: start;">
+
+      <!-- ===== FORM ===== -->
+      <section class="card">
+
+        <div class="field">
+          <div class="field-head">
+            <span class="num">01</span>
+            <label for="nameInput">What's your name?</label>
+          </div>
+          <input type="text" id="nameInput" placeholder="Enter your name">
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="num">02</span>
+            <label for="meetuptime">What time do you want to meet?</label>
+          </div>
+          <input type="text" id="meetuptime" placeholder="Enter time">
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="num">03</span>
+            <label for="meetupplace">Where should we meet?</label>
+          </div>
+          <input type="text" id="meetupplace" placeholder="Enter place">
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="num">04</span>
+            <label for="favsubject">What is your favorite subject?</label>
+          </div>
+          <input type="text" id="favsubject" placeholder="Enter subject">
+        </div>
+
+        <div class="field">
+          <div class="field-head">
+            <span class="num">05</span>
+            <label for="messages">Any message for me?</label>
+          </div>
+          <input type="text" id="messages" placeholder="Enter message">
+        </div>
+
+        <button class="btn" onclick="submitMessage()">Send it</button>
+        <p id="outputMessage"></p>
+
+      </section>
+
+      <!-- ===== LIVE PREVIEW TICKET ===== -->
+      <aside class="card ticket" id="ticket">
+        <span class="ticket-stamp">Sent</span>
+        <h3>Meet-up ticket</h3>
+        <p class="ticket-note">Updates as you type. Submit to confirm the plan.</p>
+
+        <div class="ticket-row">
+          <span class="ticket-key">Name</span>
+          <span class="ticket-val" id="pvName">Your name</span>
+        </div>
+        <div class="ticket-row">
+          <span class="ticket-key">Time</span>
+          <span class="ticket-val" id="pvTime">Time to meet</span>
+        </div>
+        <div class="ticket-row">
+          <span class="ticket-key">Place</span>
+          <span class="ticket-val" id="pvPlace">Where we meet</span>
+        </div>
+        <div class="ticket-row">
+          <span class="ticket-key">Subject</span>
+          <span class="ticket-val" id="pvSubject">Favorite subject</span>
+        </div>
+
+        <div class="perforation"><span>Message</span></div>
+
+        <div class="ticket-row block">
+          <span class="ticket-key">Your message</span>
+          <span class="ticket-val" id="pvMessage">No message yet</span>
+        </div>
+      </aside>
+
+    </div>
+
+  </section>
+
+</main>
+
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+// markdownlint config for the default project
+// https://github.com/DavidAnson/markdownlint
+
+{
+  "MD001": false,        // heading increment
+  "MD007": false,        // unordered list indentation
+  "MD010": false,        // hard tabs
+  "MD012": false,        // multiple consecutive blank lines
+  "MD013": false,        // line length
+  "MD024": false,        // duplicate heading
+  "MD026": false,        // trailing punctuation in heading
+  "MD033": false,        // inline HTML
+  "MD041": false,        // first line should be a top-level heading
+  "MD046": false,        // code block style
+  "MD047": false,        // files should end with a single newline
+  "MD049": false,        // emphasis style
+}

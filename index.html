@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign In — Vitou Phea</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600..900;1,9..144,400..600&family=Karla:wght@400..700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600..900;1,9..144,400..600&family=Karla:wght@400..700&display=swap"></noscript>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<main class="sheet">
+
+  <!-- ===== TOP BAR ===== -->
+  <header class="topbar reveal">
+    <div class="brand">
+      <span class="brand-mark">V</span>
+      <span class="brand-name">Vitou Phea</span>
+    </div>
+    <nav class="topnav" aria-label="Sandbox pages">
+      <a href="survey.html">Meet Up</a>
+    </nav>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+
+    <div class="hero-copy">
+      <p class="kicker reveal">Session 001 &middot; Sign in</p>
+
+      <h1 class="display reveal">Welcome to Your <em>Dashboard</em></h1>
+
+      <p class="lede reveal">
+        Sign in to unlock the meet-up form. Enter a registered username and password
+        from the mock database, then plan your meeting on the next page.
+      </p>
+
+      <!-- Login card (centered, vitou aesthetic) -->
+      <div class="card card-light reveal" style="max-width: 420px; margin: 0 auto;">
+        <h2 style="margin: 0 0 22px 0; font-family: 'Fraunces', Georgia, serif; font-weight: 900; font-size: 28px; letter-spacing: -1px; text-align: center;">Log In</h2>
+
+        <form id="loginForm">
+          <div class="field">
+            <label for="username">Username</label>
+            <input type="text" id="username" placeholder="Enter username" required autocomplete="username">
+          </div>
+
+          <div class="field">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter password" required autocomplete="current-password">
+          </div>
+
+          <button type="submit" class="btn" style="width: 100%; margin-top: 10px;">Log In</button>
+        </form>
+
+        <p id="message"></p>
+
+        <p style="margin-top: 16px; font-size: 13px; color: var(--ink-3); text-align: center; letter-spacing: .04em;">
+          Try: <strong>lymeng / 123</strong> &middot; <strong>vitou / pass</strong> &middot; <strong>Kour / admin123</strong>
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+<script src="script.js"></script>
+
+</body>
+</html>

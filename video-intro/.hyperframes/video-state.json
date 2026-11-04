@@ -1,0 +1,194 @@
+{
+  "version": 1,
+  "historyId": "6ce39ebb-423a-40af-add3-1214fb482280",
+  "currentRevision": "88f6c68c-d8d5-4d3a-abed-894cef91d157",
+  "pendingChanges": false,
+  "files": {
+    "AGENTS.md": {
+      "hash": "1b36171117cb7c18f4100a0db6a3782ff2e096115995733200445cc2e80a4060",
+      "content": "C:\\Users\\ZBook\\.cache\\hyperframes\\history\\6ce39ebb-423a-40af-add3-1214fb482280\\blobs\\1b\\1b36171117cb7c18f4100a0db6a3782ff2e096115995733200445cc2e80a4060"
+    },
+    "CLAUDE.md": {
+      "hash": "1b36171117cb7c18f4100a0db6a3782ff2e096115995733200445cc2e80a4060",
+      "content": "C:\\Users\\ZBook\\.cache\\hyperframes\\history\\6ce39ebb-423a-40af-add3-1214fb482280\\blobs\\1b\\1b36171117cb7c18f4100a0db6a3782ff2e096115995733200445cc2e80a4060"
+    },
+    "hyperframes.json": {
+      "hash": "53dbce1e19aa713cbb12ee0bc4d206143b45ab15e6ffbfcaa8f69572d4d24d50",
+      "content": "C:\\Users\\ZBook\\.cache\\hyperframes\\history\\6ce39ebb-423a-40af-add3-1214fb482280\\blobs\\53\\53dbce1e19aa713cbb12ee0bc4d206143b45ab15e6ffbfcaa8f69572d4d24d50"
+    },
+    "index.html": {
+      "hash": "d77f0015159e586daffc7d54bfa04c8ac6eacdd6eaaadc0e51cc6818e07734e9",
+      "content": "C:\\Users\\ZBook\\.cache\\hyperframes\\history\\6ce39ebb-423a-40af-add3-1214fb482280\\blobs\\d7\\d77f0015159e586daffc7d54bfa04c8ac6eacdd6eaaadc0e51cc6818e07734e9"
+    },
+    "meta.json": {
+      "hash": "c97a0246a10d7c18050959d9b77df04606755fe75b6301b7db66570c73b14fa0",
+      "content": "C:\\Users\\ZBook\\.cache\\hyperframes\\history\\6ce39ebb-423a-40af-add3-1214fb482280\\blobs\\c9\\c97a0246a10d7c18050959d9b77df04606755fe75b6301b7db66570c73b14fa0"
+    },
+    "package.json": {
+      "hash": "c2db36b30b84381f01ed7012994cbaeef573867d4e6f3c637bee8a0cd95b71b6",
+      "content": "C:\\Users\\ZBook\\.cache\\hyperframes\\history\\6ce39ebb-423a-40af-add3-1214fb482280\\blobs\\c2\\c2db36b30b84381f01ed7012994cbaeef573867d4e6f3c637bee8a0cd95b71b6"
+    },
+    "assets/bgm/gen.py": {
+      "hash": "b2341101336c303231ac7004bc25a3aed98d5153f7d824db4daae496bf874891",
+      "content": "C:\\Users\\ZBook\\.cache\\hyperframes\\history\\6ce39ebb-423a-40af-add3-1214fb482280\\blobs\\b2\\b2341101336c303231ac7004bc25a3aed98d5153f7d824db4daae496bf874891"
+    },
+    "assets/bgm/track.wav": {
+      "hash": "1eb76fa21e9618241cde7a03ab10be66ef79b8277b6a4cf90a0c113e123fa35b",
+      "content": "C:\\Users\\ZBook\\.cache\\hyperframes\\history\\6ce39ebb-423a-40af-add3-1214fb482280\\blobs\\1e\\1eb76fa21e9618241cde7a03ab10be66ef79b8277b6a4cf90a0c113e123fa35b"
+    }
+  },
+  "revisions": {
+    "37309ab4-b1fe-4575-bcc4-94fc43826b9b": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1793108592413,
+      "endedAt": 1793108592415,
+      "files": {
+        "index.html": {
+          "before": "C:\\Users\\ZBook\\.cache\\hyperframes\\history\\6ce39ebb-423a-40af-add3-1214fb482280\\blobs\\eb\\eb2183c2ba458165cbd6bf769ad1ed8c39ce2fdd74221ac362135d89dc33a39a",
+          "after": "C:\\Users\\ZBook\\.cache\\hyperframes\\history\\6ce39ebb-423a-40af-add3-1214fb482280\\blobs\\b9\\b901b5f83c059db7a75aa41c718f7d5e6b543e8a7e1fb7acf9844775c6f72ab1"
+        }
+      }
+    },
+    "88f6c68c-d8d5-4d3a-abed-894cef91d157": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1793109510492,
+      "endedAt": 1793109510517,
+      "files": {
+        "assets/bgm/gen.py": {
+          "before": null,
+          "after": "C:\\Users\\ZBook\\.cache\\hyperframes\\history\\6ce39ebb-423a-40af-add3-1214fb482280\\blobs\\b2\\b2341101336c303231ac7004bc25a3aed98d5153f7d824db4daae496bf874891"
+        },
+        "assets/bgm/track.wav": {
+          "before": null,
+          "after": "C:\\Users\\ZBook\\.cache\\hyperframes\\history\\6ce39ebb-423a-40af-add3-1214fb482280\\blobs\\1e\\1eb76fa21e9618241cde7a03ab10be66ef79b8277b6a4cf90a0c113e123fa35b"
+        },
+        "index.html": {
+          "before": "C:\\Users\\ZBook\\.cache\\hyperframes\\history\\6ce39ebb-423a-40af-add3-1214fb482280\\blobs\\b9\\b901b5f83c059db7a75aa41c718f7d5e6b543e8a7e1fb7acf9844775c6f72ab1",
+          "after": "C:\\Users\\ZBook\\.cache\\hyperframes\\history\\6ce39ebb-423a-40af-add3-1214fb482280\\blobs\\d7\\d77f0015159e586daffc7d54bfa04c8ac6eacdd6eaaadc0e51cc6818e07734e9"
+        }
+      }
+    }
+  },
+  "checks": {
+    "latest": {
+      "revision": "88f6c68c-d8d5-4d3a-abed-894cef91d157",
+      "id": "a6ae8f7a-629a-421f-aba9-6d4140850ffe"
+    },
+    "revisions": {
+      "37309ab4-b1fe-4575-bcc4-94fc43826b9b": [
+        {
+          "id": "78aea491-d4b1-4175-92f2-3e80ef73f778",
+          "scope": "project",
+          "metadata": {
+            "ok": false,
+            "browserSkipped": true,
+            "options": {
+              "samples": 9,
+              "atTransitions": false,
+              "maxIssues": 80,
+              "collapseStatic": true,
+              "tolerance": 2,
+              "timeout": 3000,
+              "contrast": true,
+              "strict": false,
+              "snapshots": false,
+              "browserGpuMode": "auto"
+            }
+          },
+          "createdAt": 1793108592496,
+          "contentHash": "1ad5a2078497d6d542c7ea6a09ae2576d1884092275a250bdb6663fc44dcf72f",
+          "revision": "37309ab4-b1fe-4575-bcc4-94fc43826b9b",
+          "inputFingerprint": "6a87ed2414581e19c97b6bdb2ee2fc9c212715979e855171976dc558e09b2447",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "fd9a1175-a7e9-4ced-bd7e-84be6faaf313"
+        }
+      ],
+      "88f6c68c-d8d5-4d3a-abed-894cef91d157": [
+        {
+          "id": "a6ae8f7a-629a-421f-aba9-6d4140850ffe",
+          "scope": "project",
+          "report": "C:\\Users\\ZBook\\Documents\\Default Project\\video-intro\\.hyperframes\\artifacts\\checks\\a6ae8f7a-629a-421f-aba9-6d4140850ffe.json",
+          "metadata": {
+            "ok": true,
+            "browserSkipped": false,
+            "options": {
+              "samples": 9,
+              "atTransitions": false,
+              "maxIssues": 80,
+              "collapseStatic": true,
+              "tolerance": 2,
+              "timeout": 3000,
+              "contrast": true,
+              "strict": false,
+              "snapshots": false,
+              "browserGpuMode": "auto"
+            }
+          },
+          "createdAt": 1793109518333,
+          "contentHash": "1bf9eadc6cfd7f490a3d6909fcd2944c76db8109f362f0c0716274e590b1c48d",
+          "revision": "88f6c68c-d8d5-4d3a-abed-894cef91d157",
+          "inputFingerprint": "a62ebbfc309a5ae825724f6fc6549ee1aea0cda9c2bb44401b6bb3dd4d8578dc",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        }
+      ]
+    },
+    "unversioned": [
+      {
+        "id": "2dd76305-387d-45d1-9da3-af00c7196681",
+        "scope": "project",
+        "report": "C:\\Users\\ZBook\\Documents\\Default Project\\video-intro\\.hyperframes\\artifacts\\checks\\2dd76305-387d-45d1-9da3-af00c7196681.json",
+        "metadata": {
+          "ok": false,
+          "browserSkipped": true,
+          "options": {
+            "samples": 9,
+            "atTransitions": false,
+            "maxIssues": 80,
+            "collapseStatic": true,
+            "tolerance": 2,
+            "timeout": 3000,
+            "contrast": true,
+            "strict": false,
+            "snapshots": false,
+            "browserGpuMode": "auto"
+          }
+        },
+        "createdAt": 1793108514355,
+        "contentHash": "f268395420084e35021f45fb60efd3eeb8991fc05af565a1d8a1f401c5645694",
+        "revision": null,
+        "inputFingerprint": "265c2365cd0e2084f0f2e253dee9cd197cf173f3a0c39af5852bf0ffbf4bbd46",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      }
+    ]
+  },
+  "snapshots": {
+    "latest": null,
+    "revisions": {},
+    "unversioned": []
+  },
+  "renders": {
+    "latest": {
+      "id": "fd9a1175-a7e9-4ced-bd7e-84be6faaf313",
+      "completedAt": 1793109797608,
+      "output": "C:\\Users\\ZBook\\Documents\\Default Project\\video-intro\\renders\\video-intro_2026-10-27_20-58-50.mp4",
+      "status": "completed",
+      "revision": "88f6c68c-d8d5-4d3a-abed-894cef91d157"
+    },
+    "retainedRevisions": [
+      "88f6c68c-d8d5-4d3a-abed-894cef91d157"
+    ]
+  },
+  "pendingArtifactCleanup": []
+}

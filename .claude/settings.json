@@ -1,0 +1,23 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "type": "command",
+        "command": "git pull --ff-only 2>$null",
+        "description": "Best-effort wiki sync across machines"
+      }
+    ],
+    "Stop": [
+      {
+        "type": "command",
+        "command": "powershell -ExecutionPolicy Bypass -File wiki/update_hot.ps1 2>$null",
+        "description": "Regenerate hot.md on session end"
+      },
+      {
+        "type": "command",
+        "command": "git add -A 2>$null; if ($?) { git commit -m \"wiki: auto-update $(Get-Date -Format 'yyyy-MM-dd HH:mm')\" 2>$null; if ($?) { git push 2>$null } }",
+        "description": "Auto-commit and push wiki changes"
+      }
+    ]
+  }
+}

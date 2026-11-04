@@ -1,0 +1,7 @@
+{
+  "hooks": {
+    "Stop": [
+      "powershell -ExecutionPolicy Bypass -File wiki/update_hot.ps1"
+    ]
+  }
+}

@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome — Vitou Phea</title>
+<meta name="description" content="The welcome page of Vitou Phea's CodeHS log in forms sandbox.">
+
+<!-- fonts: 3 variable files, loaded without blocking first paint -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600..900;1,9..144,400..600&family=Karla:wght@400..700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600..900;1,9..144,400..600&family=Karla:wght@400..700&display=swap"></noscript>
+
+<!-- inline favicon: kills the /favicon.ico request -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%23191c1b'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='34' font-weight='700' fill='%23f6f1e8' text-anchor='middle'%3EV%3C/text%3E%3C/svg%3E">
+
+<style>
+  /* ===== TOKENS ===== */
+  :root {
+    --paper:      #f6f1e8;   /* 60% dominant */
+    --paper-2:    #efe8db;   /* secondary surface */
+    --ink:        #191c1b;   /* text + dark panel */
+    --ink-2:      #3f4643;
+    --ink-3:      #6d736f;
+    --line:       rgba(25, 28, 27, .14);
+    --copper:     #a8480e;   /* 10% accent */
+    --copper-2:   #c96a2e;
+    --panel:      #191c1b;
+    --radius:     18px;
+  }
+
+  /* ===== BASE ===== */
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: var(--paper);
+    background-image:
+      radial-gradient(120% 80% at 84% -12%, rgba(201, 106, 46, .16), transparent 62%),
+      radial-gradient(90% 60% at -5% 105%, rgba(25, 28, 27, .07), transparent 62%);
+    color: var(--ink);
+    font-family: "Karla", "Segoe UI", system-ui, Helvetica, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== SHELL ===== */
+  .sheet {
+    position: relative;
+    z-index: 1;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 30px 26px 80px;
+  }
+
+  a { color: inherit; }
+
+  .reveal {
+    opacity: 0;
+    animation: rise .85s cubic-bezier(.2, .7, .2, 1) forwards;
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  /* ===== TOP BAR ===== */
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+    animation-delay: .04s;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .brand-mark {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 900;
+    font-size: 18px;
+  }
+
+  .brand-name {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    font-size: 19px;
+    letter-spacing: -.2px;
+  }
+
+  .topnav {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+  }
+
+  .topnav a {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--ink-3);
+    transition: color .2s ease;
+  }
+
+  .topnav a:hover { color: var(--copper); }
+
+  /* ===== HERO ===== */
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr);
+    gap: 56px;
+    align-items: center;
+    padding: 76px 0 84px;
+  }
+
+  .kicker {
+    margin: 0 0 20px 0;
+    color: var(--copper);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .26em;
+    text-transform: uppercase;
+  }
+
+  .hero-copy .kicker { animation-delay: .1s; }
+
+  .display {
+    margin: 0 0 24px 0;
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 900;
+    font-size: clamp(46px, 7.2vw, 94px);
+    line-height: .97;
+    letter-spacing: -2.6px;
+    text-wrap: balance;
+    animation-delay: .16s;
+  }
+
+  .display em {
+    position: relative;
+    font-style: italic;
+    font-weight: 600;
+    color: var(--copper);
+  }
+
+  .squiggle {
+    position: absolute;
+    left: 0;
+    bottom: -.06em;
+    width: 100%;
+    height: .16em;
+    color: var(--copper-2);
+    opacity: .7;
+    overflow: visible;
+  }
+
+  .lede {
+    max-width: 52ch;
+    margin: 0;
+    color: var(--ink-2);
+    font-size: 19px;
+    animation-delay: .24s;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+    margin-top: 34px;
+    animation-delay: .32s;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 28px;
+    border: 1px solid var(--ink);
+    border-radius: 999px;
+    background: var(--ink);
+    color: var(--paper);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: transform .18s ease, background-color .2s ease, color .2s ease, box-shadow .2s ease;
+  }
+
+  .btn:hover {
+    background: var(--copper);
+    border-color: var(--copper);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px -12px rgba(168, 72, 14, .8);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink);
+  }
+
+  .btn-ghost:hover {
+    background: transparent;
+    border-color: var(--copper);
+    color: var(--copper);
+    box-shadow: none;
+  }
+
+  /* ===== ADMISSION CARD ===== */
+  .card {
+    position: relative;
+    overflow: hidden;
+    padding: 36px 34px 30px;
+    border-radius: var(--radius);
+    background: var(--panel);
+    color: #f2ece1;
+    box-shadow: 0 24px 40px -28px rgba(25, 28, 27, .55);
+    animation-delay: .2s;
+  }
+
+  .card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(120% 90% at 100% 0%, rgba(201, 106, 46, .28), transparent 58%);
+  }
+
+  .stamp {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    display: grid;
+    place-items: center;
+    width: 88px;
+    height: 88px;
+    border: 2px solid rgba(201, 106, 46, .7);
+    border-radius: 50%;
+    color: var(--copper-2);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    transform: rotate(-12deg);
+  }
+
+  .stamp::after {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    border: 1px dashed rgba(201, 106, 46, .45);
+    border-radius: 50%;
+  }
+
+  .card-kicker {
+    margin: 0;
+    color: rgba(242, 236, 225, .55);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+  }
+
+  .card-greeting {
+    margin: 14px 0 2px 0;
+    max-width: 12ch;
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(30px, 3.6vw, 42px);
+    line-height: 1.06;
+    letter-spacing: -.8px;
+  }
+
+  .card-name {
+    margin: 0;
+    color: rgba(242, 236, 225, .62);
+    font-size: 15px;
+    letter-spacing: .06em;
+  }
+
+  .card-rule {
+    height: 1px;
+    margin: 26px 0 6px;
+    background: repeating-linear-gradient(90deg, rgba(242, 236, 225, .3) 0 6px, transparent 6px 13px);
+  }
+
+  .card-rows { margin: 0; }
+
+  .row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(242, 236, 225, .1);
+  }
+
+  .row:last-child { border-bottom: none; }
+
+  .row dt {
+    color: rgba(242, 236, 225, .5);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+  }
+
+  .row dd {
+    margin: 0;
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: right;
+  }
+
+  /* ===== SECTION SHARED ===== */
+  .section-head { max-width: 46ch; }
+
+  .section-title {
+    margin: 0 0 10px 0;
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 900;
+    font-size: clamp(30px, 4vw, 44px);
+    line-height: 1.06;
+    letter-spacing: -1.2px;
+    text-wrap: balance;
+  }
+
+  .section-note {
+    margin: 0;
+    color: var(--ink-3);
+    font-size: 16px;
+  }
+
+  /* ===== DIRECTORY LEDGER ===== */
+  .inside { padding-bottom: 72px; }
+
+  .ledger {
+    list-style: none;
+    margin: 34px 0 0 0;
+    padding: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .ledger-row {
+    display: grid;
+    grid-template-columns: 58px 190px minmax(0, 1fr) auto;
+    align-items: baseline;
+    gap: 22px;
+    padding: 22px 4px;
+    border-bottom: 1px solid var(--line);
+    transition: background-color .2s ease, padding-left .2s ease;
+  }
+
+  .ledger-row:hover {
+    background-color: var(--paper-2);
+    padding-left: 14px;
+  }
+
+  .ledger-num {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--copper);
+  }
+
+  .ledger-name {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    font-size: 21px;
+    letter-spacing: -.3px;
+  }
+
+  .ledger-desc {
+    color: var(--ink-3);
+    font-size: 15px;
+  }
+
+  .ledger-link {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--ink);
+    white-space: nowrap;
+    transition: color .2s ease;
+  }
+
+  .ledger-link span { display: inline-block; transition: transform .2s ease; }
+
+  .ledger-row:hover .ledger-link { color: var(--copper); }
+  .ledger-row:hover .ledger-link span { transform: translateX(4px); }
+
+  .ledger-here {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--copper);
+    white-space: nowrap;
+  }
+
+  /* ===== PULL NOTE ===== */
+  .note {
+    position: relative;
+    margin: 0 0 72px 0;
+    padding: 44px 48px 40px;
+    border-radius: var(--radius);
+    background: var(--paper-2);
+    content-visibility: auto;
+    contain-intrinsic-size: auto 240px;
+    animation-delay: .12s;
+  }
+
+  .note-mark {
+    position: absolute;
+    top: 18px;
+    left: 26px;
+    margin: 0;
+    color: var(--copper);
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 76px;
+    line-height: 1;
+    opacity: .35;
+  }
+
+  .note-text {
+    margin: 0;
+    max-width: 34ch;
+    font-family: "Fraunces", Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(22px, 2.7vw, 31px);
+    line-height: 1.3;
+    letter-spacing: -.6px;
+    text-wrap: balance;
+  }
+
+  .note-sign {
+    margin: 20px 0 0 0;
+    color: var(--ink-3);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    padding-top: 26px;
+    border-top: 1px solid var(--line);
+    content-visibility: auto;
+    contain-intrinsic-size: auto 70px;
+    animation-delay: .1s;
+  }
+
+  .footer-name {
+    margin: 0;
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 900;
+    font-size: 22px;
+    letter-spacing: -.4px;
+  }
+
+  .footer-meta {
+    margin: 0;
+    color: var(--ink-3);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+  }
+
+  .footer-out {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--ink-3);
+    transition: color .2s ease;
+  }
+
+  .footer-out:hover { color: var(--copper); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 920px) {
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      padding: 52px 0 60px;
+    }
+
+    .ledger-row {
+      grid-template-columns: 48px minmax(0, 1fr) auto;
+      row-gap: 6px;
+    }
+
+    .ledger-desc { grid-column: 2 / -1; }
+
+    .note { padding: 40px 30px 34px; }
+  }
+
+  @media (max-width: 560px) {
+    body { font-size: 16px; }
+
+    .sheet { padding: 22px 18px 56px; }
+
+    .topbar { flex-direction: column; align-items: flex-start; gap: 14px; }
+
+    .display { letter-spacing: -1.6px; }
+
+    .card { padding: 30px 24px 24px; }
+
+    .stamp { width: 70px; height: 70px; font-size: 9px; }
+  }
+
+  /* ===== MOTION OPT-OUT ===== */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; animation: none; }
+    .btn:hover, .ledger-row:hover .ledger-link span { transform: none; }
+  }
+</style>
+</head>
+
+<body>
+
+<main class="sheet">
+
+  <!-- ===== TOP BAR ===== -->
+  <header class="topbar reveal">
+    <div class="brand">
+      <span class="brand-mark">V</span>
+      <span class="brand-name">Vitou Phea</span>
+    </div>
+    <nav class="topnav" aria-label="Sandbox pages">
+      <a href="kour.html">Kour</a>
+      <a href="lymeng.html">Ly Meng</a>
+    </nav>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+
+    <div class="hero-copy">
+      <p class="kicker reveal">Session 001 &middot; Signed in</p>
+
+      <h1 class="display reveal">Welcome to Your <em>Dashboard Admin!<svg class="squiggle" viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true"><path d="M3 8 C 42 2, 72 11, 110 6 S 182 1, 222 6 S 282 10, 297 4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></em></h1>
+
+      <p class="lede reveal">
+        You have successfully logged in. I&rsquo;m Vitou Phea, and this is the front door of my
+        CodeHS sandbox &mdash; the login forms, the pages they unlock, and the broken things
+        I get to fix on the way.
+      </p>
+
+      <div class="hero-actions reveal">
+        <a class="btn" href="index.html">Log Out</a>
+        <a class="btn btn-ghost" href="#inside">See what&rsquo;s inside</a>
+      </div>
+    </div>
+
+    <aside class="card reveal">
+      <span class="stamp">Admitted</span>
+      <p class="card-kicker">Admission</p>
+      <p class="card-greeting" id="greeting">Welcome in</p>
+      <p class="card-name">Signed in from the CodeHS sandbox</p>
+
+      <div class="card-rule"></div>
+
+      <dl class="card-rows">
+        <div class="row">
+          <dt>Status</dt>
+          <dd>Signed in</dd>
+        </div>
+        <div class="row">
+          <dt>Today</dt>
+          <dd id="today">&mdash;</dd>
+        </div>
+        <div class="row">
+          <dt>Files</dt>
+          <dd>Four, in one folder</dd>
+        </div>
+      </dl>
+    </aside>
+
+  </section>
+
+  <!-- ===== DIRECTORY ===== -->
+  <section class="inside" id="inside">
+    <div class="section-head reveal">
+      <p class="kicker">Directory</p>
+      <h2 class="section-title">What&rsquo;s inside the sandbox</h2>
+      <p class="section-note">One login, four pages. Every link below opens in place &mdash; nothing leaves this folder.</p>
+    </div>
+
+    <ol class="ledger">
+      <li class="ledger-row reveal">
+        <span class="ledger-num">01</span>
+        <span class="ledger-name">index.html</span>
+        <span class="ledger-desc">The sign-in page. The door you just walked through.</span>
+        <a class="ledger-link" href="index.html">Open <span aria-hidden="true">&rarr;</span></a>
+      </li>
+
+      <li class="ledger-row reveal">
+        <span class="ledger-num">02</span>
+        <span class="ledger-name">kour.html</span>
+        <span class="ledger-desc">Another page from the same sandbox, still taking shape.</span>
+        <a class="ledger-link" href="kour.html">Open <span aria-hidden="true">&rarr;</span></a>
+      </li>
+
+      <li class="ledger-row reveal">
+        <span class="ledger-num">03</span>
+        <span class="ledger-name">lymeng.html</span>
+        <span class="ledger-desc">Another page from the same sandbox, still taking shape.</span>
+        <a class="ledger-link" href="lymeng.html">Open <span aria-hidden="true">&rarr;</span></a>
+      </li>
+
+      <li class="ledger-row reveal">
+        <span class="ledger-num">04</span>
+        <span class="ledger-name">vitou.html</span>
+        <span class="ledger-desc">This page. The one that says welcome.</span>
+        <span class="ledger-here">You are here</span>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ===== PULL NOTE ===== -->
+  <section class="note reveal">
+    <p class="note-mark" aria-hidden="true">&ldquo;</p>
+    <blockquote class="note-text">
+      I built the login first because everything else needs a door.
+    </blockquote>
+    <p class="note-sign">&mdash; Vitou</p>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer reveal">
+    <p class="footer-name">Vitou Phea</p>
+    <p class="footer-meta">CodeHS sandbox &middot; log in forms &middot; <span id="year">2026</span></p>
+    <a class="footer-out" href="index.html">Log Out</a>
+  </footer>
+
+</main>
+
+<script>
+  (function () {
+    var now = new Date();
+    var h = now.getHours();
+    var part = h < 12 ? "Good morning" : (h < 18 ? "Good afternoon" : "Good evening");
+
+    var greeting = document.getElementById("greeting");
+    if (greeting) { greeting.textContent = part + ", Vitou."; }
+
+    var today = document.getElementById("today");
+    if (today) {
+      today.textContent = now.toLocaleDateString(undefined, {
+        weekday: "short", month: "short", day: "numeric"
+      });
+    }
+
+    var year = document.getElementById("year");
+    if (year) { year.textContent = now.getFullYear(); }
+  })();
+</script>
+
+</body>
+</html>

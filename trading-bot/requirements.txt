@@ -1,0 +1,13 @@
+# trading-bot requirements
+#
+# Everything here is already installed in this environment (Python 3.12.10).
+# The project adds NO new packages on purpose: the data layer calls the
+# public JSON APIs directly, so there is no dependency to break later.
+#
+#   pip install -r requirements.txt   # only needed on a fresh machine
+#
+# pandas 3.0.5 / numpy 2.4.4 are verified working on Python 3.12.
+pandas>=2.2
+numpy>=1.26
+requests>=2.31
+matplotlib>=3.8

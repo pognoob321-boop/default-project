@@ -1,0 +1,45 @@
+name: Lint
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Lint Markdown files
+        uses: DavidAnson/markdownlint-cli2-action@v16
+        with:
+          config: .markdownlint.jsonc
+          glob: '**/*.md'
+
+      - name: Check PowerShell script syntax
+        run: |
+          $errors = $false
+          Get-ChildItem -Recurse -Filter *.ps1 | ForEach-Object {
+            $result = & powershell -NoProfile -Command "& { $null = [System.Management.Automation.Language.Parser]::ParseFile('$($_.FullName)', [ref]$null, [ref]$errors); if ($errors.Count -gt 0) { throw 'PowerShell syntax errors in $($_.FullName)' } }"
+            if ($LASTEXITCODE -ne 0) { exit 1 }
+          }
+
+      - name: Validate GitHub Actions workflow files
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { readdirSync, readFileSync } = require('fs');
+            const { join } = require('path');
+            const dir = join(process.cwd(), '.github', 'workflows');
+            if (!readdirSync(dir).length) return;
+            for (const f of readdirSync(dir)) {
+              if (!f.endsWith('.yml') && !f.endsWith('.yaml')) continue;
+              const content = readFileSync(join(dir, f), 'utf8');
+              // Basic sanity: must contain 'on:' and 'jobs:'
+              if (!content.includes('on:') || !content.includes('jobs:')) {
+                core.setFailed(`Workflow ${f} missing 'on:' or 'jobs:'`);
+              }
+            }

@@ -1,0 +1,20 @@
+[project]
+name = "ai-clipper"
+version = "0.1.0"
+description = "AI-powered video clipping system — YouTube URLs in, short-form clips out"
+requires-python = ">=3.10"
+dependencies = [
+    "yt-dlp>=2024.1.0",
+    "faster-whisper>=1.0.0",
+    "click>=8.0.0",
+]
+
+[project.scripts]
+ai-clipper = "ai_clipper.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["ai_clipper*"]
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"

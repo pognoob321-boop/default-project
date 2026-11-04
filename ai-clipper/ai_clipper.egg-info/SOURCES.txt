@@ -1,0 +1,14 @@
+pyproject.toml
+ai_clipper/__init__.py
+ai_clipper/analyzer.py
+ai_clipper/cli.py
+ai_clipper/clipper.py
+ai_clipper/downloader.py
+ai_clipper/output.py
+ai_clipper/transcriber.py
+ai_clipper.egg-info/PKG-INFO
+ai_clipper.egg-info/SOURCES.txt
+ai_clipper.egg-info/dependency_links.txt
+ai_clipper.egg-info/entry_points.txt
+ai_clipper.egg-info/requires.txt
+ai_clipper.egg-info/top_level.txt

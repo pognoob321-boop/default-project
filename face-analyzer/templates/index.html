@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Analysis</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Upload Section -->
+        <section id="upload-section" class="section active">
+            <div class="upload-box">
+                <div class="logo">
+                    <div class="logo-icon">&#9786;</div>
+                    <h1>Face Analyzer</h1>
+                    <p class="tagline">4 Pillars &middot; 70+ Metrics &middot; Personalized Insights</p>
+                </div>
+                <div id="drop-zone" class="drop-zone">
+                    <div class="drop-icon">&#128247;</div>
+                    <p>Drag & drop your photo here</p>
+                    <p class="sub">or</p>
+                    <label class="btn btn-primary" for="photo-input">Choose Photo</label>
+                    <input type="file" id="photo-input" accept="image/*" hidden>
+                    <p class="hint">Front-facing photo with good lighting works best</p>
+                </div>
+                <div id="preview-container" class="preview-container hidden">
+                    <img id="preview-img" alt="Preview">
+                    <button id="analyze-btn" class="btn btn-primary btn-large">Analyze My Face</button>
+                    <button id="change-photo-btn" class="btn btn-secondary">Change Photo</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loading Section -->
+        <section id="loading-section" class="section hidden">
+            <div class="loading-box">
+                <div class="spinner"></div>
+                <h2>Analyzing your face...</h2>
+                <p>Detecting landmarks &amp; computing 70+ metrics</p>
+                <div class="loading-steps">
+                    <div class="step" id="step-landmarks">&#10003; Landmark detection</div>
+                    <div class="step" id="step-harmony">&#10003; Harmony analysis</div>
+                    <div class="step" id="step-angularity">&#10003; Angularity measurements</div>
+                    <div class="step" id="step-dimorphism">&#10003; Dimorphism traits</div>
+                    <div class="step" id="step-health">&#10003; Health indicators</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section id="results-section" class="section hidden">
+            <!-- Overall Score -->
+            <div class="overall-score-card">
+                <div class="score-ring">
+                    <svg viewBox="0 0 120 120">
+                        <circle cx="60" cy="60" r="54" class="ring-bg"/>
+                        <circle cx="60" cy="60" r="54" class="ring-fill" id="score-ring-fill"/>
+                    </svg>
+                    <div class="score-value" id="overall-score">0</div>
+                    <div class="score-label" id="overall-grade">Loading...</div>
+                </div>
+                <div class="score-meta">
+                    <div class="percentile" id="percentile">Top --%</div>
+                    <div class="score-sublabel">Overall Score</div>
+                </div>
+            </div>
+
+            <!-- Pillar Cards -->
+            <div class="pillars-grid">
+                <div class="pillar-card" data-pillar="harmony">
+                    <div class="pillar-header">
+                        <h3>Harmony</h3>
+                        <span class="pillar-score" id="harmony-score">--</span>
+                    </div>
+                    <p class="pillar-desc">Facial proportional balance</p>
+                    <div class="pillar-bar"><div class="pillar-bar-fill" id="harmony-bar"></div></div>
+                    <button class="expand-btn" data-target="harmony-details">Show Breakdown &#9662;</button>
+                    <div class="details-panel hidden" id="harmony-details"></div>
+                </div>
+
+                <div class="pillar-card" data-pillar="angularity">
+                    <div class="pillar-header">
+                        <h3>Angularity</h3>
+                        <span class="pillar-score" id="angularity-score">--</span>
+                    </div>
+                    <p class="pillar-desc">Jawline &amp; bone structure</p>
+                    <div class="pillar-bar"><div class="pillar-bar-fill" id="angularity-bar"></div></div>
+                    <button class="expand-btn" data-target="angularity-details">Show Breakdown &#9662;</button>
+                    <div class="details-panel hidden" id="angularity-details"></div>
+                </div>
+
+                <div class="pillar-card" data-pillar="dimorphism">
+                    <div class="pillar-header">
+                        <h3>Dimorphism</h3>
+                        <span class="pillar-score" id="dimorphism-score">--</span>
+                    </div>
+                    <p class="pillar-desc">Gender-specific traits</p>
+                    <div class="pillar-bar"><div class="pillar-bar-fill" id="dimorphism-bar"></div></div>
+                    <button class="expand-btn" data-target="dimorphism-details">Show Breakdown &#9662;</button>
+                    <div class="details-panel hidden" id="dimorphism-details"></div>
+                </div>
+
+                <div class="pillar-card" data-pillar="health">
+                    <div class="pillar-header">
+                        <h3>Health</h3>
+                        <span class="pillar-score" id="health-score">--</span>
+                    </div>
+                    <p class="pillar-desc">Skin, symmetry &amp; features</p>
+                    <div class="pillar-bar"><div class="pillar-bar-fill" id="health-bar"></div></div>
+                    <button class="expand-btn" data-target="health-details">Show Breakdown &#9662;</button>
+                    <div class="details-panel hidden" id="health-details"></div>
+                </div>
+            </div>
+
+            <!-- Strengths & Weaknesses -->
+            <div class="two-col">
+                <div class="list-card strengths">
+                    <h3>&#128293; Top Strengths</h3>
+                    <div id="strengths-list"></div>
+                </div>
+                <div class="list-card weaknesses">
+                    <h3>&#128161; Areas to Improve</h3>
+                    <div id="weaknesses-list"></div>
+                </div>
+            </div>
+
+            <!-- Suggestions -->
+            <div class="suggestions-card">
+                <h3>&#127919; Personalized Improvement Plan</h3>
+                <div id="suggestions-list"></div>
+            </div>
+
+            <!-- New Analysis -->
+            <div class="new-analysis">
+                <button id="new-analysis-btn" class="btn btn-primary">Analyze Another Photo</button>
+            </div>
+        </section>
+    </div>
+
+    <script>
+    const dropZone = document.getElementById('drop-zone');
+    const photoInput = document.getElementById('photo-input');
+    const previewContainer = document.getElementById('preview-container');
+    const previewImg = document.getElementById('preview-img');
+    const analyzeBtn = document.getElementById('analyze-btn');
+    const changePhotoBtn = document.getElementById('change-photo-btn');
+    const uploadSection = document.getElementById('upload-section');
+    const loadingSection = document.getElementById('loading-section');
+    const resultsSection = document.getElementById('results-section');
+    const newAnalysisBtn = document.getElementById('new-analysis-btn');
+
+    let selectedFile = null;
+
+    // Drag and drop
+    dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('dragover'); });
+    dropZone.addEventListener('dragleave', () => { dropZone.classList.remove('dragover'); });
+    dropZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropZone.classList.remove('dragover');
+        const file = e.dataTransfer.files[0];
+        if (file && file.type.startsWith('image/')) showPreview(file);
+    });
+
+    photoInput.addEventListener('change', (e) => {
+        if (e.target.files[0]) showPreview(e.target.files[0]);
+    });
+
+    function showPreview(file) {
+        selectedFile = file;
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            previewImg.src = e.target.result;
+            dropZone.classList.add('hidden');
+            previewContainer.classList.remove('hidden');
+        };
+        reader.readAsDataURL(file);
+    }
+
+    changePhotoBtn.addEventListener('click', () => {
+        selectedFile = null;
+        photoInput.value = '';
+        dropZone.classList.remove('hidden');
+        previewContainer.classList.add('hidden');
+    });
+
+    analyzeBtn.addEventListener('click', async () => {
+        if (!selectedFile) return;
+
+        uploadSection.classList.add('hidden');
+        loadingSection.classList.remove('hidden');
+
+        // Animate loading steps
+        const steps = ['step-landmarks', 'step-harmony', 'step-angularity', 'step-dimorphism', 'step-health'];
+        for (let i = 0; i < steps.length; i++) {
+            await new Promise(r => setTimeout(r, 400));
+            document.getElementById(steps[i]).classList.add('done');
+        }
+
+        const formData = new FormData();
+        formData.append('photo', selectedFile);
+
+        try {
+            const response = await fetch('/analyze', { method: 'POST', body: formData });
+            const data = await response.json();
+
+            if (data.error) {
+                alert(data.error);
+                resetToUpload();
+                return;
+            }
+
+            await new Promise(r => setTimeout(r, 500));
+            showResults(data);
+        } catch (err) {
+            alert('Analysis failed: ' + err.message);
+            resetToUpload();
+        }
+    });
+
+    newAnalysisBtn.addEventListener('click', resetToUpload);
+
+    function resetToUpload() {
+        loadingSection.classList.add('hidden');
+        resultsSection.classList.add('hidden');
+        uploadSection.classList.remove('hidden');
+        selectedFile = null;
+        photoInput.value = '';
+        dropZone.classList.remove('hidden');
+        previewContainer.classList.add('hidden');
+        steps.forEach(s => document.getElementById(s).classList.remove('done'));
+    }
+
+    function showResults(data) {
+        loadingSection.classList.add('hidden');
+        resultsSection.classList.remove('hidden');
+
+        const s = data.scores;
+
+        // Overall score
+        animateNumber('overall-score', s.overall.score);
+        document.getElementById('overall-grade').textContent = s.overall.grade;
+        document.getElementById('percentile').textContent = `Top ${100 - s.overall.percentile}%`;
+
+        // Score ring
+        const circumference = 2 * Math.PI * 54;
+        const offset = circumference - (s.overall.score / 10) * circumference;
+        document.getElementById('score-ring-fill').style.strokeDashoffset = offset;
+
+        // Pillars
+        ['harmony', 'angularity', 'dimorphism', 'health'].forEach(p => {
+            const ps = s.pillars[p];
+            document.getElementById(`${p}-score`).textContent = ps.score.toFixed(1);
+            document.getElementById(`${p}-bar`).style.width = `${ps.score * 10}%`;
+            document.getElementById(`${p}-bar`).className = `pillar-bar-fill ${getBarClass(ps.score)}`;
+        });
+
+        // Details panels
+        populateDetails('harmony-details', data.details.harmony);
+        populateDetails('angularity-details', data.details.angularity);
+        populateDimorphismDetails('dimorphism-details', data.details.dimorphism);
+        populateHealthDetails('health-details', data.details.health);
+
+        // Strengths
+        const strengthsList = document.getElementById('strengths-list');
+        strengthsList.innerHTML = s.strengths.map(m =>
+            `<div class="list-item strength-item">
+                <span class="item-name">${formatName(m.name)}</span>
+                <span class="item-score">${m.score.toFixed(1)}</span>
+            </div>`
+        ).join('');
+
+        // Weaknesses
+        const weaknessesList = document.getElementById('weaknesses-list');
+        weaknessesList.innerHTML = s.weaknesses.map(m =>
+            `<div class="list-item weakness-item">
+                <span class="item-name">${formatName(m.name)}</span>
+                <span class="item-score">${m.score.toFixed(1)}</span>
+            </div>`
+        ).join('');
+
+        // Suggestions
+        const suggestionsList = document.getElementById('suggestions-list');
+        suggestionsList.innerHTML = s.suggestions.map(sg =>
+            `<div class="suggestion-item priority-${sg.priority}">
+                <div class="suggestion-header">
+                    <span class="suggestion-metric">${formatName(sg.metric)}</span>
+                    <span class="suggestion-score">${sg.current_score.toFixed(1)}/10</span>
+                </div>
+                <p>${sg.suggestion}</p>
+            </div>`
+        ).join('');
+
+        // Setup expand buttons
+        document.querySelectorAll('.expand-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = document.getElementById(btn.dataset.target);
+                target.classList.toggle('hidden');
+                btn.innerHTML = target.classList.contains('hidden')
+                    ? `Show Breakdown &#9662;`
+                    : `Hide Breakdown &#9652;`;
+            });
+        });
+    }
+
+    function populateDetails(containerId, data) {
+        const container = document.getElementById(containerId);
+        let html = '<div class="metrics-grid">';
+        for (const [key, val] of Object.entries(data)) {
+            if (typeof val === 'object' && val.score !== undefined) {
+                html += `<div class="metric-item">
+                    <div class="metric-header">
+                        <span class="metric-name">${formatName(key)}</span>
+                        <span class="metric-score ${getScoreClass(val.score)}">${val.score.toFixed(1)}</span>
+                    </div>
+                    <div class="metric-bar"><div class="metric-bar-fill ${getBarClass(val.score)}" style="width:${val.score*10}%"></div></div>
+                    <p class="metric-desc">${val.description || ''}</p>
+                </div>`;
+            }
+        }
+        html += '</div>';
+        container.innerHTML = html;
+    }
+
+    function populateDimorphismDetails(containerId, data) {
+        const container = document.getElementById(containerId);
+        let html = '<div class="metrics-grid">';
+        for (const [key, val] of Object.entries(data)) {
+            if (typeof val === 'object' && val.score !== undefined) {
+                const trait = val.trait ? `<span class="trait-badge ${val.trait}">${val.trait}</span>` : '';
+                html += `<div class="metric-item">
+                    <div class="metric-header">
+                        <span class="metric-name">${formatName(key)} ${trait}</span>
+                        <span class="metric-score ${getScoreClass(val.score)}">${val.score.toFixed(1)}</span>
+                    </div>
+                    <div class="metric-bar"><div class="metric-bar-fill ${getBarClass(val.score)}" style="width:${val.score*10}%"></div></div>
+                    <p class="metric-desc">${val.description || ''}</p>
+                </div>`;
+            }
+        }
+        html += '</div>';
+        container.innerHTML = html;
+    }
+
+    function populateHealthDetails(containerId, data) {
+        const container = document.getElementById(containerId);
+        let html = '';
+        for (const [catName, catData] of Object.entries(data)) {
+            if (typeof catData !== 'object' || catData === null) continue;
+            if (catName === 'overall_health') continue;
+            html += `<h4 class="health-category">${formatName(catName)}</h4><div class="metrics-grid">`;
+            for (const [key, val] of Object.entries(catData)) {
+                if (typeof val === 'object' && val.score !== undefined) {
+                    html += `<div class="metric-item">
+                        <div class="metric-header">
+                            <span class="metric-name">${formatName(key)}</span>
+                            <span class="metric-score ${getScoreClass(val.score)}">${val.score.toFixed(1)}</span>
+                        </div>
+                        <div class="metric-bar"><div class="metric-bar-fill ${getBarClass(val.score)}" style="width:${val.score*10}%"></div></div>
+                        <p class="metric-desc">${val.description || ''}</p>
+                    </div>`;
+                }
+            }
+            html += '</div>';
+        }
+        container.innerHTML = html;
+    }
+
+    function animateNumber(id, target) {
+        const el = document.getElementById(id);
+        let current = 0;
+        const step = target / 30;
+        const interval = setInterval(() => {
+            current += step;
+            if (current >= target) { current = target; clearInterval(interval); }
+            el.textContent = current.toFixed(1);
+        }, 30);
+    }
+
+    function formatName(key) {
+        return key.replace(/_/g, ' ').replace(/\./g, ' › ').replace(/\b\w/g, c => c.toUpperCase());
+    }
+
+    function getBarClass(score) {
+        if (score >= 8) return 'bar-excellent';
+        if (score >= 6) return 'bar-good';
+        if (score >= 4) return 'bar-average';
+        return 'bar-low';
+    }
+
+    function getScoreClass(score) {
+        if (score >= 8) return 'score-excellent';
+        if (score >= 6) return 'score-good';
+        if (score >= 4) return 'score-average';
+        return 'score-low';
+    }
+    </script>
+</body>
+</html>

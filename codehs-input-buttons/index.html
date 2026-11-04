@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student's Message and Meet Up</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700;900&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  /* ===== COLORS + FONTS ===== */
+  :root {
+    --bg: #0d1317;
+    --panel: #16212a;
+    --panel-2: #1c2934;
+    --field: #0f181e;
+    --line: #2a3a46;
+    --text: #edf2f4;
+    --muted: #9aabb6;
+    --accent: #f5a524;
+    --accent-soft: #ffd08a;
+    --radius: 14px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Karla", "Segoe UI", Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* faint grid backdrop */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, .03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, .03) 1px, transparent 1px);
+    background-size: 46px 46px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    position: relative;
+    z-index: 1;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 56px 20px 80px;
+  }
+
+  /* ===== HEADER ===== */
+  .kicker {
+    display: inline-block;
+    margin: 0 0 18px 0;
+    padding: 6px 14px;
+    border: 1px solid rgba(245, 165, 36, .35);
+    border-radius: 999px;
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 0 0 14px 0;
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 900;
+    font-size: clamp(38px, 6vw, 62px);
+    line-height: 1.03;
+    letter-spacing: -1.4px;
+  }
+
+  .lede {
+    max-width: 54ch;
+    margin: 0;
+    color: var(--muted);
+    font-size: 18px;
+  }
+
+  /* ===== LAYOUT ===== */
+  .grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+    gap: 26px;
+    align-items: start;
+    margin-top: 40px;
+  }
+
+  .card {
+    padding: 28px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+
+  /* ===== FORM ===== */
+  .field { margin-bottom: 18px; }
+
+  .field-head {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .num {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 13px;
+    color: var(--accent);
+    opacity: .85;
+  }
+
+  label {
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  input {
+    width: 100%;
+    padding: 14px 16px;
+    background: var(--field);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    color: var(--text);
+    font: inherit;
+    font-size: 16px;
+    transition: border-color .18s, box-shadow .18s;
+  }
+
+  input::placeholder { color: #63757f; }
+
+  input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(245, 165, 36, .16);
+  }
+
+  .btn {
+    width: 100%;
+    margin-top: 6px;
+    padding: 16px 24px;
+    background: var(--accent);
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 10px 22px rgba(245, 165, 36, .20);
+    color: #221604;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform .16s ease, background-color .2s ease, box-shadow .2s ease;
+  }
+
+  .btn:hover {
+    background: var(--accent-soft);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(245, 165, 36, .28);
+  }
+
+  .btn:active { transform: translateY(0); }
+
+  #outputMessage {
+    display: none;
+    margin: 18px 0 0 0;
+    padding: 16px 18px;
+    background: var(--panel-2);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    font-size: 15px;
+  }
+
+  #outputMessage.show {
+    display: block;
+    animation: pop .35s ease both;
+  }
+
+  @keyframes pop {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  /* ===== MEET-UP TICKET ===== */
+  .ticket { position: relative; }
+
+  .ticket h3 {
+    margin: 0 0 4px 0;
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 700;
+    font-size: 26px;
+    letter-spacing: -.4px;
+  }
+
+  .ticket-note {
+    margin: 0 0 20px 0;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .ticket-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px dashed var(--line);
+  }
+
+  .ticket-row:last-of-type { border-bottom: none; }
+
+  .ticket-key {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+  }
+
+  .ticket-val {
+    color: var(--text);
+    font-weight: 700;
+    text-align: right;
+  }
+
+  .ticket-val.placeholder {
+    color: #63757f;
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  .perforation {
+    position: relative;
+    margin: 18px 0 16px;
+    border-top: 2px dashed var(--line);
+  }
+
+  .perforation span {
+    position: absolute;
+    top: -11px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0 12px;
+    background: var(--panel);
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+  }
+
+  .ticket-row.block { display: block; }
+
+  .ticket-row.block .ticket-val {
+    display: block;
+    margin-top: 6px;
+    text-align: left;
+    font-weight: 400;
+  }
+
+  .stamp {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    padding: 6px 14px;
+    border: 2px solid var(--accent);
+    border-radius: 8px;
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: rotate(-8deg) scale(.85);
+    transition: opacity .3s ease, transform .3s ease;
+  }
+
+  .ticket.sent .stamp {
+    opacity: 1;
+    transform: rotate(-8deg) scale(1);
+  }
+
+  .footer {
+    margin-top: 34px;
+    color: #63757f;
+    font-size: 14px;
+  }
+
+  /* ===== SMALL SCREENS ===== */
+  @media (max-width: 880px) {
+    .grid { grid-template-columns: 1fr; }
+    .page { padding: 36px 16px 60px; }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <p class="kicker">C2 &middot; Inputs &amp; Outputs</p>
+    <h1>Student's Message and Meet Up</h1>
+    <p class="lede">
+      Fill this in and the meeting is sorted: your name, the time, the spot,
+      your favorite subject, and a message for me.
+    </p>
+  </header>
+
+  <div class="grid">
+
+    <!-- ===== FORM ===== -->
+    <section class="card">
+      <div class="field">
+        <div class="field-head">
+          <span class="num">01</span>
+          <label for="nameInput">What's your name?</label>
+        </div>
+        <input type="text" id="nameInput" placeholder="Enter your name">
+      </div>
+
+      <div class="field">
+        <div class="field-head">
+          <span class="num">02</span>
+          <label for="meetuptime">What time do you want to meet?</label>
+        </div>
+        <input type="text" id="meetuptime" placeholder="Enter time">
+      </div>
+
+      <div class="field">
+        <div class="field-head">
+          <span class="num">03</span>
+          <label for="meetupplace">Where should we meet?</label>
+        </div>
+        <input type="text" id="meetupplace" placeholder="Enter place">
+      </div>
+
+      <div class="field">
+        <div class="field-head">
+          <span class="num">04</span>
+          <label for="favsubject">What is your favorite subject?</label>
+        </div>
+        <input type="text" id="favsubject" placeholder="Enter subject">
+      </div>
+
+      <div class="field">
+        <div class="field-head">
+          <span class="num">05</span>
+          <label for="messages">Any message for me?</label>
+        </div>
+        <input type="text" id="messages" placeholder="Enter message">
+      </div>
+
+      <button class="btn" onclick="submitMessage()">Send it</button>
+      <p id="outputMessage"></p>
+    </section>
+
+    <!-- ===== LIVE PREVIEW ===== -->
+    <aside class="card ticket" id="ticket">
+      <span class="stamp">Sent</span>
+      <h3>Meet-up ticket</h3>
+      <p class="ticket-note">Updates as you type. Submit to confirm the plan.</p>
+
+      <div class="ticket-row">
+        <span class="ticket-key">Name</span>
+        <span class="ticket-val" id="pvName">Your name</span>
+      </div>
+      <div class="ticket-row">
+        <span class="ticket-key">Time</span>
+        <span class="ticket-val" id="pvTime">Time to meet</span>
+      </div>
+      <div class="ticket-row">
+        <span class="ticket-key">Place</span>
+        <span class="ticket-val" id="pvPlace">Where we meet</span>
+      </div>
+      <div class="ticket-row">
+        <span class="ticket-key">Subject</span>
+        <span class="ticket-val" id="pvSubject">Favorite subject</span>
+      </div>
+
+      <div class="perforation"><span>Message</span></div>
+
+      <div class="ticket-row block">
+        <span class="ticket-key">Your message</span>
+        <span class="ticket-val" id="pvMessage">No message yet</span>
+      </div>
+    </aside>
+
+  </div>
+
+  <p class="footer">Made by Vitou Phea &middot; CodeHS sandbox</p>
+
+</div>
+
+<script>
+  function getValues() {
+    return {
+      name: document.getElementById("nameInput").value.trim(),
+      meettime: document.getElementById("meetuptime").value.trim(),
+      place: document.getElementById("meetupplace").value.trim(),
+      subject: document.getElementById("favsubject").value.trim(),
+      message: document.getElementById("messages").value.trim()
+    };
+  }
+
+  function setPreview(id, value, fallback) {
+    const el = document.getElementById(id);
+    el.textContent = value || fallback;
+    el.classList.toggle("placeholder", !value);
+  }
+
+  function renderPreview() {
+    const v = getValues();
+    setPreview("pvName", v.name, "Your name");
+    setPreview("pvTime", v.meettime, "Time to meet");
+    setPreview("pvPlace", v.place, "Where we meet");
+    setPreview("pvSubject", v.subject, "Favorite subject");
+    setPreview("pvMessage", v.message, "No message yet");
+  }
+
+  function submitMessage() {
+    const v = getValues();
+    const out = document.getElementById("outputMessage");
+
+    if (!v.name && !v.meettime && !v.place && !v.subject && !v.message) {
+      out.textContent = "Fill in at least one box and I will answer.";
+      out.classList.add("show");
+      return;
+    }
+
+    const output = "Hi " + (v.name || "there") + "! You want to meet at "
+      + (v.meettime || "a time to decide") + " and the place is "
+      + (v.place || "not set yet") + ". Your favorite subject is "
+      + (v.subject || "still a mystery") + " and last but not least, your message to me is \""
+      + (v.message || "no message") + "\".";
+
+    out.textContent = output;
+    out.classList.add("show");
+    document.getElementById("ticket").classList.add("sent");
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const fields = ["nameInput", "meetuptime", "meetupplace", "favsubject", "messages"];
+    fields.forEach(function (id) {
+      const el = document.getElementById(id);
+      el.addEventListener("input", renderPreview);
+      el.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          submitMessage();
+        }
+      });
+    });
+    renderPreview();
+  });
+</script>
+
+</body>
+</html>

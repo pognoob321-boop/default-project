@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      :root {
+        --ground: #0a0a0a;
+        --ink: #ffffff;
+        --accent: #7c3aed;
+        --hl: #ffd400;
+        --font-display: ui-sans-serif, system-ui, -apple-system, sans-serif;
+        --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: var(--ground);
+      }
+      #root {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        font-family: var(--font-display);
+      }
+      #bg { position: absolute; inset: 0; background: var(--ground); }
+      /* shots — one per beat, colour-flood background per shot */
+      .shot {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+      }
+      .shot .tint {
+        position: absolute;
+        inset: 0;
+      }
+      .shot .inner {
+        position: absolute;
+        left: 50%;
+        top: 700px;
+        text-align: center;
+        width: 100%;
+        max-width: 1000px;
+      }
+      .shot .kicker {
+        font-size: 24px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        margin-bottom: 14px;
+        opacity: 0.9;
+      }
+      .shot .headline {
+        font-size: 104px;
+        font-weight: 900;
+        line-height: 1.02;
+        color: var(--ink);
+        text-transform: uppercase;
+        margin: 0;
+        filter: drop-shadow(0 6px 12px rgba(0,0,0,0.5));
+      }
+      .shot .headline .word { display: inline-block; }
+      .shot .headline .hl { color: var(--hl); }
+      .shot .sub {
+        font-size: 30px;
+        font-weight: 700;
+        color: rgba(255,255,255,0.92);
+        margin-top: 16px;
+        line-height: 1.25;
+        opacity: 0;
+      }
+      /* OpenCode logo sting */
+      #logo {
+        position: absolute;
+        left: 50%;
+        top: 430px;
+        width: 150px;
+        height: 150px;
+        opacity: 0;
+      }
+      #logo-ring {
+        stroke: var(--accent);
+        stroke-width: 16;
+        fill: none;
+        stroke-linecap: round;
+      }
+      #logo-text {
+        font-family: var(--font-display);
+        font-weight: 900;
+        font-size: 42px;
+        fill: var(--ink);
+        text-anchor: middle;
+        dominant-baseline: central;
+        filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
+      }
+      /* terminal card (decorative) */
+      .shot .term {
+        position: absolute;
+        left: 50%;
+        top: 1040px;
+        width: 760px;
+        height: 220px;
+        background: #0f0f12;
+        border: 1px solid #2a2a33;
+        border-radius: 16px;
+        padding: 14px 18px;
+        font-family: var(--font-mono);
+        font-size: 15px;
+        color: #a5a5a5;
+        line-height: 1.5;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.45);
+        opacity: 0;
+      }
+      .shot .term .line { margin: 2px 0; white-space: pre; opacity: 0; }
+      .shot .term .line .cmd { color: var(--accent); }
+      .shot .term .line .ok { color: #22c55e; }
+      /* captions — Hormozi style, centre band, one group at a time */
+      #captions {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 1300px;
+        text-align: center;
+        pointer-events: none;
+      }
+      .caption-group {
+        display: inline-block;
+        font-family: var(--font-display);
+        font-size: 60px;
+        font-weight: 900;
+        text-transform: uppercase;
+        color: #ffffff;
+        text-align: center;
+        line-height: 1.12;
+        -webkit-text-stroke: 4px #000000;
+        text-stroke: 4px #000000;
+        filter: drop-shadow(0 6px 14px rgba(0,0,0,0.7));
+        max-width: 980px;
+        padding: 0 40px;
+      }
+      .caption-group .cap-text { display: inline-block; }
+      .caption-group .hl { color: var(--hl); -webkit-text-stroke: 4px #5b21b6; text-stroke: 4px #5b21b6; }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="30"
+      data-width="1080"
+      data-height="1920"
+    >
+      <audio id="bgm" src="assets/bgm/track.wav" data-start="0" data-duration="30"></audio>
+      <div id="bg"></div>
+
+      <!-- HOOK — logo sting + title on screen at frame 0 area, no fade-up -->
+      <div id="shot-0" class="shot clip" data-start="0.0" data-duration="3.0" data-track-index="0">
+        <div class="tint" style="background:radial-gradient(60% 60% at 50% 35%,#3b1277 0%,#0a0a0a 62%)"></div>
+        <svg id="logo" viewBox="0 0 200 200">
+          <defs>
+            <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#7c3aed" />
+              <stop offset="100%" stop-color="#ffd400" />
+            </linearGradient>
+          </defs>
+          <circle id="logo-ring" cx="100" cy="100" r="72" stroke-dasharray="452" stroke-dashoffset="452" />
+          <text id="logo-text" x="100" y="104">OC</text>
+        </svg>
+        <div class="inner">
+          <div class="kicker" style="color:var(--hl)">OPENCODE</div>
+          <h1 class="headline">
+            <span class="word">OpenCode</span>
+            <span class="word hl">changed</span>
+            <span class="word">coding.</span>
+          </h1>
+          <div class="sub">just changed coding.</div>
+        </div>
+        <div class="term">
+          <div class="line">&gt; <span class="cmd">opencode</span> --agent</div>
+          <div class="line"><span class="ok">●</span> model: claude-opus-4 · local-first</div>
+        </div>
+      </div>
+
+      <!-- beat 1 -->
+      <div id="shot-1" class="shot clip" data-start="3.0" data-duration="3.0" data-track-index="0">
+        <div class="tint" style="background:radial-gradient(60% 60% at 50% 35%,#1e3a8a 0%,#0a0a0a 62%)"></div>
+        <div class="inner">
+          <div class="kicker" style="color:#60a5fa">FREE AI AGENT</div>
+          <h1 class="headline">
+            <span class="word hl">Free AI coding</span>
+            <span class="word">agent</span>
+          </h1>
+          <div class="sub">agent that lives in your terminal.</div>
+        </div>
+        <div class="term">
+          <div class="line">▸ installing models…</div>
+          <div class="line"><span class="ok">✓</span> no subscription · no browser</div>
+        </div>
+      </div>
+
+      <!-- beat 2 -->
+      <div id="shot-2" class="shot clip" data-start="6.0" data-duration="3.0" data-track-index="0">
+        <div class="tint" style="background:radial-gradient(60% 60% at 50% 35%,#b91c1c 0%,#0a0a0a 62%)"></div>
+        <div class="inner">
+          <div class="kicker" style="color:#fca5a5">NO SUBSCRIPTION</div>
+          <h1 class="headline">
+            <span class="word hl">No subscription.</span>
+            <span class="word">No browser.</span>
+          </h1>
+          <div class="sub">Runs local on your machine.</div>
+        </div>
+        <div class="term">
+          <div class="line">▸ <span class="cmd">opencode --local</span></div>
+          <div class="line"><span class="ok">✓</span> no API key required</div>
+        </div>
+      </div>
+
+      <!-- beat 3 -->
+      <div id="shot-3" class="shot clip" data-start="9.0" data-duration="3.0" data-track-index="0">
+        <div class="tint" style="background:radial-gradient(60% 60% at 50% 35%,#15803d 0%,#0a0a0a 62%)"></div>
+        <div class="inner">
+          <div class="kicker" style="color:#4ade80">EDIT · DEBUG · REFACTOR</div>
+          <h1 class="headline">
+            <span class="word">Edit debug</span>
+            <span class="word hl">refactor</span>
+          </h1>
+          <div class="sub">across your whole repo.</div>
+        </div>
+        <div class="term">
+          <div class="line">src/index.ts</div>
+          <div class="line"><span class="ok">●</span> refactored · 12 files touched</div>
+        </div>
+      </div>
+
+      <!-- beat 4 -->
+      <div id="shot-4" class="shot clip" data-start="12.0" data-duration="3.0" data-track-index="0">
+        <div class="tint" style="background:radial-gradient(60% 60% at 50% 35%,#c2410c 0%,#0a0a0a 62%)"></div>
+        <div class="inner">
+          <div class="kicker" style="color:#fdba74">MULTI-MODEL</div>
+          <h1 class="headline">
+            <span class="word hl">Multi-model</span>
+          </h1>
+          <div class="sub">Claude, Gemini, your pick.</div>
+        </div>
+        <div class="term">
+          <div class="line">▸ <span class="cmd">model:</span> claude-3-sonnet</div>
+          <div class="line"><span class="ok">✓</span> switch models mid-chat</div>
+        </div>
+      </div>
+
+      <!-- beat 5 -->
+      <div id="shot-5" class="shot clip" data-start="15.0" data-duration="3.0" data-track-index="0">
+        <div class="tint" style="background:radial-gradient(60% 60% at 50% 35%,#be185d 0%,#0a0a0a 62%)"></div>
+        <div class="inner">
+          <div class="kicker" style="color:#f472b6">GIT-AWARE</div>
+          <h1 class="headline">
+            <span class="word hl">Git-aware.</span>
+          </h1>
+          <div class="sub">It knows your codebase.</div>
+        </div>
+        <div class="term">
+          <div class="line">▸ git status</div>
+          <div class="line"><span class="ok">✓</span> +12 −4 · context aware</div>
+        </div>
+      </div>
+
+      <!-- beat 6 -->
+      <div id="shot-6" class="shot clip" data-start="18.0" data-duration="3.0" data-track-index="0">
+        <div class="tint" style="background:radial-gradient(60% 60% at 50% 35%,#ca8a04 0%,#0a0a0a 62%)"></div>
+        <div class="inner">
+          <div class="kicker" style="color:#fde047">SHIP FASTER</div>
+          <h1 class="headline">
+            <span class="word">Ship</span>
+            <span class="word hl">faster than</span>
+            <span class="word">you can swipe.</span>
+          </h1>
+          <div class="sub">you can swipe.</div>
+        </div>
+        <div class="term">
+          <div class="line">▸ <span class="cmd">opencode deploy</span></div>
+          <div class="line"><span class="ok">●</span> deploy ready</div>
+        </div>
+      </div>
+
+      <!-- beat 7 -->
+      <div id="shot-7" class="shot clip" data-start="21.0" data-duration="3.0" data-track-index="0">
+        <div class="tint" style="background:radial-gradient(60% 60% at 50% 35%,#3b1277 0%,#0a0a0a 62%)"></div>
+        <div class="inner">
+          <div class="kicker" style="color:#a78bfa">100% FREE</div>
+          <h1 class="headline">
+            <span class="word">It's free and</span>
+            <span class="word hl">open source.</span>
+          </h1>
+          <div class="sub">open source.</div>
+        </div>
+        <div class="term">
+          <div class="line">▸ <span class="cmd">license:</span> MIT</div>
+          <div class="line"><span class="ok">✓</span> github.com/opencode-ai/opencode</div>
+        </div>
+      </div>
+
+      <!-- PAYOFF / LOOP — echoes hook for a clean loop seam + camera punch-in -->
+      <div id="shot-8" class="shot clip" data-start="24.0" data-duration="6.0" data-track-index="0">
+        <div class="tint" style="background:radial-gradient(60% 60% at 50% 35%,#3b1277 0%,#0a0a0a 62%)"></div>
+        <div class="inner">
+          <div class="kicker" style="color:var(--hl)">TRY IT</div>
+          <h1 class="headline">
+            <span class="word">Try</span>
+            <span class="word hl">OpenCode.</span>
+          </h1>
+          <div class="sub">Link in bio.</div>
+        </div>
+        <div class="term">
+          <div class="line">&gt; <span class="cmd">opencode</span></div>
+          <div class="line"><span class="ok">●</span> free · open source</div>
+        </div>
+      </div>
+
+      <!-- captions track -->
+      <div id="captions" data-track-kind="captions">
+        <div class="caption-group clip" id="cap-0"  data-start="0.20" data-duration="0.80"><span class="cap-text">OpenCode<span class="hl"> changed</span></span></div>
+        <div class="caption-group clip" id="cap-1"  data-start="1.00" data-duration="0.80"><span class="cap-text">just changed</span></div>
+        <div class="caption-group clip" id="cap-2"  data-start="1.80" data-duration="1.00"><span class="cap-text"><span class="hl">coding.</span></span></div>
+        <div class="caption-group clip" id="cap-3"  data-start="3.20" data-duration="0.80"><span class="cap-text"><span class="hl">Free AI coding</span></span></div>
+        <div class="caption-group clip" id="cap-4"  data-start="4.00" data-duration="0.80"><span class="cap-text">agent that lives</span></div>
+        <div class="caption-group clip" id="cap-5"  data-start="4.80" data-duration="0.80"><span class="cap-text">in your terminal</span></div>
+        <div class="caption-group clip" id="cap-6"  data-start="6.20" data-duration="0.80"><span class="cap-text"><span class="hl">No subscription.</span></span></div>
+        <div class="caption-group clip" id="cap-7"  data-start="7.00" data-duration="0.80"><span class="cap-text"><span class="hl">No browser.</span></span></div>
+        <div class="caption-group clip" id="cap-8"  data-start="7.80" data-duration="0.80"><span class="cap-text">Runs local on</span></div>
+        <div class="caption-group clip" id="cap-9"  data-start="8.60" data-duration="0.80"><span class="cap-text">your machine.</span></div>
+        <div class="caption-group clip" id="cap-10" data-start="9.20" data-duration="0.80"><span class="cap-text">Edit debug refactor</span></div>
+        <div class="caption-group clip" id="cap-11" data-start="10.00" data-duration="0.80"><span class="cap-text">across your whole</span></div>
+        <div class="caption-group clip" id="cap-12" data-start="10.80" data-duration="0.80"><span class="cap-text"><span class="hl">repo.</span></span></div>
+        <div class="caption-group clip" id="cap-13" data-start="12.20" data-duration="0.80"><span class="cap-text"><span class="hl">Multi-model</span></span></div>
+        <div class="caption-group clip" id="cap-14" data-start="13.00" data-duration="0.80"><span class="cap-text">Claude Gemini</span></div>
+        <div class="caption-group clip" id="cap-15" data-start="13.80" data-duration="0.80"><span class="cap-text"><span class="hl">your pick.</span></span></div>
+        <div class="caption-group clip" id="cap-16" data-start="15.20" data-duration="0.80"><span class="cap-text"><span class="hl">Git-aware.</span></span></div>
+        <div class="caption-group clip" id="cap-17" data-start="16.00" data-duration="0.80"><span class="cap-text">It knows your</span></div>
+        <div class="caption-group clip" id="cap-18" data-start="16.80" data-duration="0.80"><span class="cap-text"><span class="hl">codebase.</span></span></div>
+        <div class="caption-group clip" id="cap-19" data-start="18.20" data-duration="0.80"><span class="cap-text">Ship faster than</span></div>
+        <div class="caption-group clip" id="cap-20" data-start="19.00" data-duration="0.80"><span class="cap-text"><span class="hl">you can swipe.</span></span></div>
+        <div class="caption-group clip" id="cap-21" data-start="21.20" data-duration="0.80"><span class="cap-text">It's free and</span></div>
+        <div class="caption-group clip" id="cap-22" data-start="22.00" data-duration="0.80"><span class="cap-text"><span class="hl">open source.</span></span></div>
+        <div class="caption-group clip" id="cap-23" data-start="24.20" data-duration="1.20"><span class="cap-text">Try <span class="hl">OpenCode.</span></span></div>
+        <div class="caption-group clip" id="cap-24" data-start="25.40" data-duration="4.20"><span class="cap-text"><span class="hl">Link in bio.</span></span></div>
+      </div>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // ── OpenCode logo sting (shot-0) ──
+      tl.fromTo("#logo-ring", { strokeDashoffset: 452 }, { strokeDashoffset: 0, duration: 0.7, ease: "power2.out" }, 0);
+      tl.fromTo("#logo", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.7)" }, 0.15);
+      tl.to("#logo", { scale: 1.12, duration: 0.4, ease: "power2.inOut" }, 1.0);
+      tl.to("#logo", { scale: 1, duration: 0.4, ease: "power2.inOut" }, 1.45);
+      tl.to("#logo", { opacity: 0, scale: 1.3, duration: 0.25, ease: "power3.in" }, 2.75);
+
+      // ── shots: colour-flood cut every beat; per-word blur-in titles (motion.md) ──
+      document.querySelectorAll('#root > .shot').forEach((shot, i) => {
+        const start = Number(shot.dataset.start);
+        const dur = Number(shot.dataset.duration);
+        const end = start + dur;
+        const inner = shot.querySelector('.inner');
+        const kicker = shot.querySelector('.kicker');
+        const sub = shot.querySelector('.sub');
+        const term = shot.querySelector('.term');
+        const lines = Array.from(term ? term.querySelectorAll('.line') : []);
+        const words = Array.from(shot.querySelectorAll('.headline .word'));
+
+        // centre horizontally via GSAP-owned transform (no CSS transform on this node)
+        tl.set(inner, { xPercent: -50 }, 0);
+        tl.set(term, { xPercent: -50 }, 0);
+
+        if (i === 0) {
+          // hook: dead still at frame 0 — no fade-up (retention contract)
+          tl.set(inner, { opacity: 1, scale: 1, y: 0 }, 0);
+          tl.set(kicker, { opacity: 1 }, 0);
+          tl.set(sub, { opacity: 1 }, 0);
+          tl.set(term, { opacity: 1 }, 0);
+          tl.set(lines.map(l => l), { opacity: 1 }, 0);
+        } else {
+          tl.fromTo(inner, { opacity: 0, scale: 0.9, y: 18 },
+            { opacity: 1, scale: 1, y: 0, duration: 0.2, ease: "power2.out" }, start);
+          tl.fromTo(kicker, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.25, ease: "power2.out" }, start + 0.06);
+          tl.fromTo(sub, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.25, ease: "power2.out" }, start + 0.18);
+          tl.fromTo(term, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.25, ease: "power2.out" }, start + 0.12);
+          lines.forEach((line, li) => {
+            tl.fromTo(line, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.2, ease: "power2.out" }, start + 0.28 + li * 0.07);
+          });
+        }
+
+        // per-word blur-in headline (motion.md title recipe)
+        words.forEach((w, wi) => {
+          tl.fromTo(w, { filter: "blur(6px)", opacity: 0 },
+            { filter: "blur(0px)", opacity: 1, duration: 0.12, ease: "power2.out" }, start + wi * 0.055);
+        });
+
+        // exit: blur-scale pop
+        tl.to(inner, { opacity: 0, scale: 1.08, filter: "blur(8px)", duration: 0.14, ease: "power3.in" }, end - 0.14);
+        tl.to(term, { opacity: 0, scale: 1.05, duration: 0.12, ease: "power3.in" }, end - 0.14);
+
+        // camera punch-in on payoff (shot-8)
+        if (i === 8) {
+          tl.to(inner, { scale: 1.18, duration: 4, ease: "linear" }, start);
+        }
+      });
+
+      // ── captions: per-group pop-in (Hormozi), hard kill after exit ──
+      document.querySelectorAll('#captions .caption-group').forEach((g) => {
+        const s = Number(g.dataset.start);
+        const dur = Number(g.dataset.duration);
+        const e = s + dur;
+        const text = g.querySelector('.cap-text');
+        tl.fromTo(text, { opacity: 0, scale: 0.55 },
+          { opacity: 1, scale: 1, duration: 0.2, ease: "back.out(1.5)" }, s);
+        tl.to(text, { opacity: 0, scale: 0.85, duration: 0.11, ease: "power3.in" }, e - 0.11);
+        tl.set(text, { opacity: 0, visibility: "hidden" }, e);
+      });
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

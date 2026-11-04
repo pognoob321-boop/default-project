@@ -1,0 +1,33 @@
+# Large data files (exceed GitHub 100MB limit)
+trading-bot/data/archive/BTCUSDT_1m_2017-08_2026-09.csv
+trading-bot/data/archive/BTCUSDT_1m_2018-01_2021-12.csv
+
+# Trading data archives
+trading-bot/data/archive/*.csv
+trading-bot/data/*.csv
+trading-bot/data/*.json
+
+# Video renders
+video-intro/renders/*.mp4
+video-tiktok/renders/*.mp4
+
+# AI clipper output
+ai-clipper/output/*.mp4
+ai-clipper/output/*.wav
+ai-clipper/output/*.json
+ai-clipper/output/.work/*
+ai-clipper/ai_clipper.egg-info/
+ai-clipper/__pycache__/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+
+# Node
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db

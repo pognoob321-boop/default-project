@@ -1,0 +1,955 @@
+{
+  "ok": false,
+  "strict": false,
+  "browserSkipped": true,
+  "lint": {
+    "ok": false,
+    "errorCount": 29,
+    "warningCount": 26,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "root_missing_composition_id",
+        "severity": "error",
+        "message": "Root composition is missing `data-composition-id`.",
+        "selector": "#bgm",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable `data-composition-id` to the entry composition wrapper."
+      },
+      {
+        "code": "root_missing_dimensions",
+        "severity": "error",
+        "message": "Root composition is missing `data-width` or `data-height`.",
+        "selector": "#bgm",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Set numeric `data-width` and `data-height` on the entry composition root."
+      },
+      {
+        "code": "gsap_css_transform_conflict",
+        "severity": "error",
+        "message": "\".inner\" has CSS `transform: translateX(-50%)` and a GSAP tween animates y/scale. GSAP will overwrite the full CSS transform, discarding any translateX(-50%) centering or CSS scale value.",
+        "selector": ".inner",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Remove `transform: translateX(-50%)` from CSS and replace with GSAP properties: xPercent: -50. Example: tl.fromTo('.inner', { xPercent: -50 }, { xPercent: -50, ...yourAnimation }). tl.fromTo is exempt from this rule."
+      },
+      {
+        "code": "caption_exit_missing_hard_kill",
+        "severity": "error",
+        "message": "Caption exit animations (tl.to with opacity: 0) detected without a hard tl.set kill. Exit tweens can fail when karaoke word-level tweens conflict, leaving captions stuck on screen.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add `tl.set(groupEl, { opacity: 0, visibility: \"hidden\" }, group.end)` after every exit tl.to animation as a deterministic kill."
+      },
+      {
+        "code": "timeline_track_too_dense",
+        "severity": "warning",
+        "message": "Track 0 has 9 timed elements in this HTML file. Smaller sub-compositions keep timelines easier to read, iterate on, and diff.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Move coherent scene groups into separate .html files under compositions/ and mount them from the parent with data-composition-src so the timeline stays easier to inspect, revise, and validate."
+      },
+      {
+        "code": "deprecated_data_end",
+        "severity": "error",
+        "message": "<div id=\"cap-0\"> uses data-end without data-duration. Use data-duration in source HTML.",
+        "selector": "#cap-0",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Replace data-end with data-duration. The compiler generates data-end from data-duration automatically."
+      },
+      {
+        "code": "deprecated_data_end",
+        "severity": "error",
+        "message": "<div id=\"cap-1\"> uses data-end without data-duration. Use data-duration in source HTML.",
+        "selector": "#cap-1",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Replace data-end with data-duration. The compiler generates data-end from data-duration automatically."
+      },
+      {
+        "code": "deprecated_data_end",
+        "severity": "error",
+        "message": "<div id=\"cap-2\"> uses data-end without data-duration. Use data-duration in source HTML.",
+        "selector": "#cap-2",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Replace data-end with data-duration. The compiler generates data-end from data-duration automatically."
+      },
+      {
+        "code": "deprecated_data_end",
+        "severity": "error",
+        "message": "<div id=\"cap-3\"> uses data-end without data-duration. Use data-duration in source HTML.",
+        "selector": "#cap-3",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Replace data-end with data-duration. The compiler generates data-end from data-duration automatically."
+      },
+      {
+        "code": "deprecated_data_end",
+        "severity": "error",
+        "message": "<div id=\"cap-4\"> uses data-end without data-duration. Use data-duration in source HTML.",
+        "selector": "#cap-4",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Replace data-end with data-duration. The compiler generates data-end from data-duration automatically."
+      },
+      {
+        "code": "deprecated_data_end",
+        "severity": "error",
+        "message": "<div id=\"cap-5\"> uses data-end without data-duration. Use data-duration in source HTML.",
+        "selector": "#cap-5",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Replace data-end with data-duration. The compiler generates data-end from data-duration automatically."
+      },
+      {
+        "code": "deprecated_data_end",
+        "severity": "error",
+        "message": "<div id=\"cap-6\"> uses data-end without data-duration. Use data-duration in source HTML.",
+        "selector": "#cap-6",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Replace data-end with data-duration. The compiler generates data-end from data-duration automatically."
+      },
+      {
+        "code": "deprecated_data_end",
+        "severity": "error",
+        "message": "<div id=\"cap-7\"> uses data-end without data-duration. Use data-duration in source HTML.",
+        "selector": "#cap-7",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Replace data-end with data-duration. The compiler generates data-end from data-duration automatically."
+      },
+      {
+        "code": "deprecated_data_end",
+        "severity": "error",
+        "message": "<div id=\"cap-8\"> uses data-end without data-duration. Use data-duration in source HTML.",
+        "selector": "#cap-8",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Replace data-end with data-duration. The compiler generates data-end from data-duration automatically."
+      },
+      {
+        "code": "deprecated_data_end",
+        "severity": "error",
+        "message": "<div id=\"cap-9\"> uses data-end without data-duration. Use data-duration in source HTML.",
+        "selector": "#cap-9",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Replace data-end with data-duration. The compiler generates data-end from data-duration automatically."
+      },
+      {
+        "code": "deprecated_data_end",
+        "severity": "error",
+        "message": "<div id=\"cap-10\"> uses data-end without data-duration. Use data-duration in source HTML.",
+        "selector": "#cap-10",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Replace data-end with data-duration. The compiler generates data-end from data-duration automatically."
+      },
+      {
+        "code": "deprecated_data_end",
+        "severity": "error",
+        "message": "<div id=\"cap-11\"> uses data-end without data-duration. Use data-duration in source HTML.",
+        "selector": "#cap-11",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Replace data-end with data-duration. The compiler generates data-end from data-duration automatically."
+      },
+      {
+        "code": "deprecated_data_end",
+        "severity": "error",
+        "message": "<div id=\"cap-12\"> uses data-end without data-duration. Use data-duration in source HTML.",
+        "selector": "#cap-12",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Replace data-end with data-duration. The compiler generates data-end from data-duration automatically."
+      },
+      {
+        "code": "deprecated_data_end",
+        "severity": "error",
+        "message": "<div id=\"cap-13\"> uses data-end without data-duration. Use data-duration in source HTML.",
+        "selector": "#cap-13",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Replace data-end with data-duration. The compiler generates data-end from data-duration automatically."
+      },
+      {
+        "code": "deprecated_data_end",
+        "severity": "error",
+        "message": "<div id=\"cap-14\"> uses data-end without data-duration. Use data-duration in source HTML.",
+        "selector": "#cap-14",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Replace data-end with data-duration. The compiler generates data-end from data-duration automatically."
+      },
+      {
+        "code": "deprecated_data_end",
+        "severity": "error",
+        "message": "<div id=\"cap-15\"> uses data-end without data-duration. Use data-duration in source HTML.",
+        "selector": "#cap-15",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Replace data-end with data-duration. The compiler generates data-end from data-duration automatically."
+      },
+      {
+        "code": "deprecated_data_end",
+        "severity": "error",
+        "message": "<div id=\"cap-16\"> uses data-end without data-duration. Use data-duration in source HTML.",
+        "selector": "#cap-16",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Replace data-end with data-duration. The compiler generates data-end from data-duration automatically."
+      },
+      {
+        "code": "deprecated_data_end",
+        "severity": "error",
+        "message": "<div id=\"cap-17\"> uses data-end without data-duration. Use data-duration in source HTML.",
+        "selector": "#cap-17",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Replace data-end with data-duration. The compiler generates data-end from data-duration automatically."
+      },
+      {
+        "code": "deprecated_data_end",
+        "severity": "error",
+        "message": "<div id=\"cap-18\"> uses data-end without data-duration. Use data-duration in source HTML.",
+        "selector": "#cap-18",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Replace data-end with data-duration. The compiler generates data-end from data-duration automatically."
+      },
+      {
+        "code": "deprecated_data_end",
+        "severity": "error",
+        "message": "<div id=\"cap-19\"> uses data-end without data-duration. Use data-duration in source HTML.",
+        "selector": "#cap-19",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Replace data-end with data-duration. The compiler generates data-end from data-duration automatically."
+      },
+      {
+        "code": "deprecated_data_end",
+        "severity": "error",
+        "message": "<div id=\"cap-20\"> uses data-end without data-duration. Use data-duration in source HTML.",
+        "selector": "#cap-20",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Replace data-end with data-duration. The compiler generates data-end from data-duration automatically."
+      },
+      {
+        "code": "deprecated_data_end",
+        "severity": "error",
+        "message": "<div id=\"cap-21\"> uses data-end without data-duration. Use data-duration in source HTML.",
+        "selector": "#cap-21",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Replace data-end with data-duration. The compiler generates data-end from data-duration automatically."
+      },
+      {
+        "code": "deprecated_data_end",
+        "severity": "error",
+        "message": "<div id=\"cap-22\"> uses data-end without data-duration. Use data-duration in source HTML.",
+        "selector": "#cap-22",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Replace data-end with data-duration. The compiler generates data-end from data-duration automatically."
+      },
+      {
+        "code": "deprecated_data_end",
+        "severity": "error",
+        "message": "<div id=\"cap-23\"> uses data-end without data-duration. Use data-duration in source HTML.",
+        "selector": "#cap-23",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Replace data-end with data-duration. The compiler generates data-end from data-duration automatically."
+      },
+      {
+        "code": "deprecated_data_end",
+        "severity": "error",
+        "message": "<div id=\"cap-24\"> uses data-end without data-duration. Use data-duration in source HTML.",
+        "selector": "#cap-24",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Replace data-end with data-duration. The compiler generates data-end from data-duration automatically."
+      },
+      {
+        "code": "timed_element_missing_clip_class",
+        "severity": "warning",
+        "message": "<div id=\"cap-0\"> has timing attributes but no class=\"clip\". The runtime still hides it outside its time range, but Studio and the GSAP clip-ownership rules use .clip to recognise a clip, so leaving it off makes the element harder to edit and to lint.",
+        "selector": "#cap-0",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add class=\"clip\" to the element so Studio and the linter can recognise it as a clip."
+      },
+      {
+        "code": "timed_element_missing_clip_class",
+        "severity": "warning",
+        "message": "<div id=\"cap-1\"> has timing attributes but no class=\"clip\". The runtime still hides it outside its time range, but Studio and the GSAP clip-ownership rules use .clip to recognise a clip, so leaving it off makes the element harder to edit and to lint.",
+        "selector": "#cap-1",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add class=\"clip\" to the element so Studio and the linter can recognise it as a clip."
+      },
+      {
+        "code": "timed_element_missing_clip_class",
+        "severity": "warning",
+        "message": "<div id=\"cap-2\"> has timing attributes but no class=\"clip\". The runtime still hides it outside its time range, but Studio and the GSAP clip-ownership rules use .clip to recognise a clip, so leaving it off makes the element harder to edit and to lint.",
+        "selector": "#cap-2",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add class=\"clip\" to the element so Studio and the linter can recognise it as a clip."
+      },
+      {
+        "code": "timed_element_missing_clip_class",
+        "severity": "warning",
+        "message": "<div id=\"cap-3\"> has timing attributes but no class=\"clip\". The runtime still hides it outside its time range, but Studio and the GSAP clip-ownership rules use .clip to recognise a clip, so leaving it off makes the element harder to edit and to lint.",
+        "selector": "#cap-3",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add class=\"clip\" to the element so Studio and the linter can recognise it as a clip."
+      },
+      {
+        "code": "timed_element_missing_clip_class",
+        "severity": "warning",
+        "message": "<div id=\"cap-4\"> has timing attributes but no class=\"clip\". The runtime still hides it outside its time range, but Studio and the GSAP clip-ownership rules use .clip to recognise a clip, so leaving it off makes the element harder to edit and to lint.",
+        "selector": "#cap-4",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add class=\"clip\" to the element so Studio and the linter can recognise it as a clip."
+      },
+      {
+        "code": "timed_element_missing_clip_class",
+        "severity": "warning",
+        "message": "<div id=\"cap-5\"> has timing attributes but no class=\"clip\". The runtime still hides it outside its time range, but Studio and the GSAP clip-ownership rules use .clip to recognise a clip, so leaving it off makes the element harder to edit and to lint.",
+        "selector": "#cap-5",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add class=\"clip\" to the element so Studio and the linter can recognise it as a clip."
+      },
+      {
+        "code": "timed_element_missing_clip_class",
+        "severity": "warning",
+        "message": "<div id=\"cap-6\"> has timing attributes but no class=\"clip\". The runtime still hides it outside its time range, but Studio and the GSAP clip-ownership rules use .clip to recognise a clip, so leaving it off makes the element harder to edit and to lint.",
+        "selector": "#cap-6",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add class=\"clip\" to the element so Studio and the linter can recognise it as a clip."
+      },
+      {
+        "code": "timed_element_missing_clip_class",
+        "severity": "warning",
+        "message": "<div id=\"cap-7\"> has timing attributes but no class=\"clip\". The runtime still hides it outside its time range, but Studio and the GSAP clip-ownership rules use .clip to recognise a clip, so leaving it off makes the element harder to edit and to lint.",
+        "selector": "#cap-7",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add class=\"clip\" to the element so Studio and the linter can recognise it as a clip."
+      },
+      {
+        "code": "timed_element_missing_clip_class",
+        "severity": "warning",
+        "message": "<div id=\"cap-8\"> has timing attributes but no class=\"clip\". The runtime still hides it outside its time range, but Studio and the GSAP clip-ownership rules use .clip to recognise a clip, so leaving it off makes the element harder to edit and to lint.",
+        "selector": "#cap-8",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add class=\"clip\" to the element so Studio and the linter can recognise it as a clip."
+      },
+      {
+        "code": "timed_element_missing_clip_class",
+        "severity": "warning",
+        "message": "<div id=\"cap-9\"> has timing attributes but no class=\"clip\". The runtime still hides it outside its time range, but Studio and the GSAP clip-ownership rules use .clip to recognise a clip, so leaving it off makes the element harder to edit and to lint.",
+        "selector": "#cap-9",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add class=\"clip\" to the element so Studio and the linter can recognise it as a clip."
+      },
+      {
+        "code": "timed_element_missing_clip_class",
+        "severity": "warning",
+        "message": "<div id=\"cap-10\"> has timing attributes but no class=\"clip\". The runtime still hides it outside its time range, but Studio and the GSAP clip-ownership rules use .clip to recognise a clip, so leaving it off makes the element harder to edit and to lint.",
+        "selector": "#cap-10",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add class=\"clip\" to the element so Studio and the linter can recognise it as a clip."
+      },
+      {
+        "code": "timed_element_missing_clip_class",
+        "severity": "warning",
+        "message": "<div id=\"cap-11\"> has timing attributes but no class=\"clip\". The runtime still hides it outside its time range, but Studio and the GSAP clip-ownership rules use .clip to recognise a clip, so leaving it off makes the element harder to edit and to lint.",
+        "selector": "#cap-11",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add class=\"clip\" to the element so Studio and the linter can recognise it as a clip."
+      },
+      {
+        "code": "timed_element_missing_clip_class",
+        "severity": "warning",
+        "message": "<div id=\"cap-12\"> has timing attributes but no class=\"clip\". The runtime still hides it outside its time range, but Studio and the GSAP clip-ownership rules use .clip to recognise a clip, so leaving it off makes the element harder to edit and to lint.",
+        "selector": "#cap-12",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add class=\"clip\" to the element so Studio and the linter can recognise it as a clip."
+      },
+      {
+        "code": "timed_element_missing_clip_class",
+        "severity": "warning",
+        "message": "<div id=\"cap-13\"> has timing attributes but no class=\"clip\". The runtime still hides it outside its time range, but Studio and the GSAP clip-ownership rules use .clip to recognise a clip, so leaving it off makes the element harder to edit and to lint.",
+        "selector": "#cap-13",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add class=\"clip\" to the element so Studio and the linter can recognise it as a clip."
+      },
+      {
+        "code": "timed_element_missing_clip_class",
+        "severity": "warning",
+        "message": "<div id=\"cap-14\"> has timing attributes but no class=\"clip\". The runtime still hides it outside its time range, but Studio and the GSAP clip-ownership rules use .clip to recognise a clip, so leaving it off makes the element harder to edit and to lint.",
+        "selector": "#cap-14",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add class=\"clip\" to the element so Studio and the linter can recognise it as a clip."
+      },
+      {
+        "code": "timed_element_missing_clip_class",
+        "severity": "warning",
+        "message": "<div id=\"cap-15\"> has timing attributes but no class=\"clip\". The runtime still hides it outside its time range, but Studio and the GSAP clip-ownership rules use .clip to recognise a clip, so leaving it off makes the element harder to edit and to lint.",
+        "selector": "#cap-15",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add class=\"clip\" to the element so Studio and the linter can recognise it as a clip."
+      },
+      {
+        "code": "timed_element_missing_clip_class",
+        "severity": "warning",
+        "message": "<div id=\"cap-16\"> has timing attributes but no class=\"clip\". The runtime still hides it outside its time range, but Studio and the GSAP clip-ownership rules use .clip to recognise a clip, so leaving it off makes the element harder to edit and to lint.",
+        "selector": "#cap-16",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add class=\"clip\" to the element so Studio and the linter can recognise it as a clip."
+      },
+      {
+        "code": "timed_element_missing_clip_class",
+        "severity": "warning",
+        "message": "<div id=\"cap-17\"> has timing attributes but no class=\"clip\". The runtime still hides it outside its time range, but Studio and the GSAP clip-ownership rules use .clip to recognise a clip, so leaving it off makes the element harder to edit and to lint.",
+        "selector": "#cap-17",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add class=\"clip\" to the element so Studio and the linter can recognise it as a clip."
+      },
+      {
+        "code": "timed_element_missing_clip_class",
+        "severity": "warning",
+        "message": "<div id=\"cap-18\"> has timing attributes but no class=\"clip\". The runtime still hides it outside its time range, but Studio and the GSAP clip-ownership rules use .clip to recognise a clip, so leaving it off makes the element harder to edit and to lint.",
+        "selector": "#cap-18",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add class=\"clip\" to the element so Studio and the linter can recognise it as a clip."
+      },
+      {
+        "code": "timed_element_missing_clip_class",
+        "severity": "warning",
+        "message": "<div id=\"cap-19\"> has timing attributes but no class=\"clip\". The runtime still hides it outside its time range, but Studio and the GSAP clip-ownership rules use .clip to recognise a clip, so leaving it off makes the element harder to edit and to lint.",
+        "selector": "#cap-19",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add class=\"clip\" to the element so Studio and the linter can recognise it as a clip."
+      },
+      {
+        "code": "timed_element_missing_clip_class",
+        "severity": "warning",
+        "message": "<div id=\"cap-20\"> has timing attributes but no class=\"clip\". The runtime still hides it outside its time range, but Studio and the GSAP clip-ownership rules use .clip to recognise a clip, so leaving it off makes the element harder to edit and to lint.",
+        "selector": "#cap-20",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add class=\"clip\" to the element so Studio and the linter can recognise it as a clip."
+      },
+      {
+        "code": "timed_element_missing_clip_class",
+        "severity": "warning",
+        "message": "<div id=\"cap-21\"> has timing attributes but no class=\"clip\". The runtime still hides it outside its time range, but Studio and the GSAP clip-ownership rules use .clip to recognise a clip, so leaving it off makes the element harder to edit and to lint.",
+        "selector": "#cap-21",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add class=\"clip\" to the element so Studio and the linter can recognise it as a clip."
+      },
+      {
+        "code": "timed_element_missing_clip_class",
+        "severity": "warning",
+        "message": "<div id=\"cap-22\"> has timing attributes but no class=\"clip\". The runtime still hides it outside its time range, but Studio and the GSAP clip-ownership rules use .clip to recognise a clip, so leaving it off makes the element harder to edit and to lint.",
+        "selector": "#cap-22",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add class=\"clip\" to the element so Studio and the linter can recognise it as a clip."
+      },
+      {
+        "code": "timed_element_missing_clip_class",
+        "severity": "warning",
+        "message": "<div id=\"cap-23\"> has timing attributes but no class=\"clip\". The runtime still hides it outside its time range, but Studio and the GSAP clip-ownership rules use .clip to recognise a clip, so leaving it off makes the element harder to edit and to lint.",
+        "selector": "#cap-23",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add class=\"clip\" to the element so Studio and the linter can recognise it as a clip."
+      },
+      {
+        "code": "timed_element_missing_clip_class",
+        "severity": "warning",
+        "message": "<div id=\"cap-24\"> has timing attributes but no class=\"clip\". The runtime still hides it outside its time range, but Studio and the GSAP clip-ownership rules use .clip to recognise a clip, so leaving it off makes the element harder to edit and to lint.",
+        "selector": "#cap-24",
+        "dataAttributes": {},
+        "sourceFile": "C:\\Users\\ZBook\\Documents\\Default Project\\video-tiktok\\index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add class=\"clip\" to the element so Studio and the linter can recognise it as a clip."
+      }
+    ],
+    "filesScanned": 1
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "duration": 0,
+    "samples": [],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 0,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [],
+    "checked": 0,
+    "passed": 0
+  },
+  "craft": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "step": 0,
+    "samples": 0
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  }
+}

@@ -1,0 +1,2 @@
+[console_scripts]
+ai-clipper = ai_clipper.cli:main
